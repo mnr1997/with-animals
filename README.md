@@ -16,7 +16,7 @@
 ​
 ### 主な利用シーン
 ・動物の画像を投稿する時  
-・動物可愛い姿で癒されたい時 
+・動物可愛い姿で癒されたい時  
 ​
 ## 設計書
 後ほど作成予定
@@ -32,3 +32,6 @@
 - 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
 - アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
 - 使用しない場合は、使用素材の項目をREADMEから削除してください。
+
+## 実装機能リストURL
+https://docs.google.com/spreadsheets/d/1LLDTjaYN0i1fNMW9-KtHjoRvcAiTGnR5beQRPEIkG34/edit?usp=sharing
