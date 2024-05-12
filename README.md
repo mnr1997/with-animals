@@ -1,24 +1,39 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# <!--ここにアプリ名を入力-->
+​
+## サイト概要
+### サイトテーマ
+<!--何を『目的』とし、どのような『分類』なのかを簡潔に書く-->
+動物の画像を投稿・閲覧できるSNS
+​
+### テーマを選んだ理由
+<!--なぜこのようなテーマにしたかを説明する-->
+猫を２匹飼っており、元々SNSで猫の画像を投稿をすることがありましたが、投稿の一覧を表示できても猫ごとに投稿を分けることができず不便さを感じていました。
+そこで、猫ごとにプロフィールや投稿を表示できれば便利だと考えました。
+また、動物園や動物の保護活動をしている団体等の宣伝や活動を知ってもらうきっかけになるのではないかと考えました。
+​
+### ターゲットユーザ
+<!--誰に使ってもらうかを具体的に記載する-->
+・動物を飼っており、飼っている動物の可愛さを共有したいと考えている人
+・動物を飼えないが、動物が好きで癒しを求めている人
+・宣伝や活動を知ってもらいたい動物園や水族館、動物の保護活動をしている団体
+​
+### 主な利用シーン
+<!--どのような時に使うのかの状況を記載すること-->
+・動物の画像を投稿する時
+・動物可愛い姿で癒されたい時
+​
+## 設計書
+<!--テーマを設定・提出する時点では不要です-->
+後ほど作成予定
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
