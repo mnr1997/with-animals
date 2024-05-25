@@ -11,9 +11,6 @@ james = User.find_or_create_by!(email: "james@example.com") do |user|
   user.password = "password"
 end
 
-Post.find_or_create_by!(caption: "サンプル投稿") do |post|
-  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/子猫.jpeg"), filename:"sample-post1.jpg")
-  post.user = james
-end
+james.posts.create!(caption: "テスト投稿")
 
 puts "dataの作成に成功しました"

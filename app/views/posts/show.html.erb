@@ -1,6 +1,6 @@
-<h1>Posts#show</h1>
+<h1>投稿詳細</h1>
   <div>
-    <%= image_tag @post.get_image %>
+    <%= image_tag @post.get_image(200,200) %>
     <p><%= @post.caption %></p>
     <p><%= link_to @post.user.name, user_path(@post.user.id) %></p>
   </div>
