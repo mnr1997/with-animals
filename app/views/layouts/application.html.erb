@@ -12,6 +12,7 @@
 
   <body>
     <header>
+      <h1><%= link_to "with Animals", posts_path %></h1>
       <% if user_signed_in? %>
         <li>
         <%= link_to '投稿フォーム', new_post_path %>

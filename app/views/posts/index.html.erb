@@ -2,6 +2,10 @@
 
 <% @posts.each do |post| %>
   <div>
-    <%= post.caption %>
+    <%= link_to post_path(post.id) do %>
+      <%= image_tag post.get_image(200,200) %>
+    <% end %>
+    <p><%= post.caption %></p>
+    <p><%= link_to post.user.name, user_path(post.user.id) %></p>
   </div>
 <% end %>

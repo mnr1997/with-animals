@@ -2,10 +2,19 @@
 <div>
   <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image(100,100) %>
+  <p>紹介:<%= @user.introduction %></p>
 </div>
+
+<% if @user == current_user %>
+  <%= link_to "Edit", edit_user_path(current_user.id) %>
+<% end %>
 
 <% @posts.each do |post| %>
 <div>
-  
+  <%= link_to post_path(post.id) do %>
+    <%= image_tag post.get_image(200,200) %>
+  <% end %>
+    <p><%= post.caption %></p>
+    
 </div>
 <% end %>
