@@ -6,6 +6,8 @@ class User < ApplicationRecord
   
   has_many :posts, dependent: :destroy
   
+  validates :name, presence: true
+  
   has_one_attached :profile_image
   GUEST_USER_EMAIL = "guest@example.com"
 
