@@ -1,0 +1,13 @@
+<h2>カテゴリー</h2>
+
+<%= form_with model: @category do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit "新規登録" %>
+<% end %>
+
+<% @categories.each do |category| %>
+  <p>
+    <%= category.name %>
+    <%= link_to "編集", edit_category_path(category) %>
+  </p>
+<% end %>
