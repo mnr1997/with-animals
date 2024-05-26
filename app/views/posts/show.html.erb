@@ -11,6 +11,20 @@
       <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     <% end %>
     
+    <% if @post.favorited_by?(current_user) %>
+      <p>
+        <%= link_to post_favorite_path(@post), method: :delete do %>
+        <i class="fa-solid fa-heart" style="color: red;"></i> <%= @post.favorites.count %> いいね
+        <% end %>
+      </p>
+      <% else %>
+      <p>
+        <%= link_to post_favorite_path(@post), method: :post do %>
+        <i class="fa-regular fa-heart" style="color: red;"></i> <%= @post.favorites.count %> いいね
+        <% end %>
+      </p>
+    <% end %>
+    
     <dev>
       <p>コメント件数：<%= @post.comments.count %></p>
       <% @post.comments.each do |comment| %>
