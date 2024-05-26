@@ -6,10 +6,29 @@
     <p><%= @post.created_at.strftime('%Y/%m/%d') %></p>
     
     <% if @post.user == current_user %>
-      <%= link_to "Edit", edit_post_path %>
+      <%= link_to "編集", edit_post_path %>
       |
-      <%= link_to "Destroy", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     <% end %>
+    
+    <dev>
+      <p>コメント件数：<%= @post.comments.count %></p>
+      <% @post.comments.each do |comment| %>
+        <p><%= image_tag comment.user.get_profile_image(50,50), class: "rounded-circle" %>
+           <%= comment.user.name %>
+        </p>
+        <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+        <% end %>
+      <% end %>
+    </dev>
+    <div>
+      <%= form_with model: [@post, @comment] do |f| %>
+        <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
+      <% end %>
+    </div>
     
   </div>
 
