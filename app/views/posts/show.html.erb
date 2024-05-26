@@ -11,6 +11,7 @@
       <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     <% end %>
     
+    
     <% if @post.favorited_by?(current_user) %>
       <p>
         <%= link_to post_favorite_path(@post), method: :delete do %>
@@ -25,7 +26,7 @@
       </p>
     <% end %>
     
-    <dev>
+    <div>
       <p>コメント件数：<%= @post.comments.count %></p>
       <% @post.comments.each do |comment| %>
         <p><%= image_tag comment.user.get_profile_image(50,50), class: "rounded-circle" %>
@@ -36,12 +37,12 @@
           <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
         <% end %>
       <% end %>
-    </dev>
+    </div>
     <div>
-      <%= form_with model: [@post, @comment] do |f| %>
-        <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
-        <%= f.submit "送信する" %>
-      <% end %>
+        <%= form_with model: [@post, @comment] do |f| %>
+          <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
+          <%= f.submit "送信する" %>
+        <% end %>
     </div>
     
   </div>
