@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'animals/new'
+  get 'animals/index'
+  get 'animals/show'
+  get 'animals/edit'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "homes#top"
   devise_for :users
@@ -16,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update] do
     get :favorite_posts, :following, :followed
-    resources :animals, only: [:new, :create, :index, :show, :edit, :update]
+    resources :animals, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     collection do
       get :confirm
     end
