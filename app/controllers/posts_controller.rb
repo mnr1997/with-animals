@@ -2,14 +2,16 @@ class PostsController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   def new
     @post = Post.new
+    @animals = current_user.animals
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
       redirect_to posts_path
     else
+      @animals = current_user.animals
       render :new
     end
   end
@@ -26,7 +28,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
   end
-  
+
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
@@ -35,24 +37,24 @@ class PostsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     post = Post.find(params[:id])
     post.destroy
     redirect_to user_path(current_user.id)
   end
-  
+
   private
-  
+
   def post_params
-    params.require(:post).permit(:image, :caption)
+    params.require(:post).permit(:image, :caption, animal_ids: [])
   end
-  
+
   def is_matching_login_user
     post = Post.find(params[:id])
     unless post.user_id == current_user.id
       redirect_to user_path(current_user.id)
     end
   end
-  
+
 end
