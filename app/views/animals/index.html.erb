@@ -1,2 +1,9 @@
 <h1>Animals#index</h1>
-<p>Find me in app/views/animals/index.html.erb</p>
+
+<% @animals.each do |animal| %>
+  <%= image_tag animal.get_animal_image(200,200) %>
+  <p><%= animal.name %></p>
+  <p><%= animal.sex %></p>
+  <p><%= animal.age %></p>
+  <p><%= animal.character %></p>
+<% end %>

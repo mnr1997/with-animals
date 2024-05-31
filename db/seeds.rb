@@ -11,7 +11,9 @@ james = User.find_or_create_by!(email: "james@example.com") do |user|
   user.password = "password"
 end
 
-james.posts.create!(caption: "テスト投稿")
+james.posts.find_or_create_by!(caption: "テスト投稿") do |post|
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/子猫.jpeg"), filename:"sample-post3.jpg")
+end
 
 james.animals.find_or_create_by!(name: "ポチ") do |animal|
   animal.sex = 0
