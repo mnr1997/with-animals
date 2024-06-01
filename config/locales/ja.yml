@@ -1,0 +1,7 @@
+ja:
+  enums:
+    animal:
+      sex:
+        male: "♂"
+        female: "♀"
+        unknown: "不明"

@@ -3,6 +3,8 @@ class Animal < ApplicationRecord
   belongs_to :category, optional: true
 
   has_one_attached :animal_image
+  
+  enum sex: { male: 0, female: 1, unknown: 2 }
 
   def get_animal_image(width, height)
     unless animal_image.attached?
