@@ -9,6 +9,10 @@
 　  <%= link_to "プロフィール編集", edit_user_path %>
   <% end %>
   <% end %>
+  
+<div>
+  <%= link_to "動物一覧", user_animals_path(@user.id) %>
+</div>
 
 <h4>投稿一覧</h4>
 <% @posts.each do |post| %>

@@ -1,2 +1,11 @@
 <h1>Animals#show</h1>
-<p>Find me in app/views/animals/show.html.erb</p>
+
+  <%= image_tag @animal.get_animal_image(200,200) %>
+  <p><%= @animal.name %></p>
+  <p><%= @animal.sex %></p>
+  <p><%= @animal.age %></p>
+  <p><%= @animal.character %></p>
+  
+<%= link_to "戻る", user_animals_path(@user.id) %>
+
+

@@ -1,2 +1,14 @@
 <h1>Animals#new</h1>
-<p>Find me in app/views/animals/new.html.erb</p>
+
+<%= form_with model: @animal, url: user_animals_path do |f| %>
+  <h4>画像</h4>
+  <%= f.file_field :image, accept: "image/*" %>
+
+  名前<%= f.text_field :name %>
+  性別<%= f.text_field :sex %>
+  年齢<%= f.text_field :age %>
+  性格<%= f.text_field :character %>
+
+  <%= f.submit '投稿' %>
+
+<% end %>

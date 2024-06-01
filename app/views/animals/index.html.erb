@@ -1,9 +1,12 @@
 <h1>Animals#index</h1>
 
-<% @animals.each do |animal| %>
-  <%= image_tag animal.get_animal_image(200,200) %>
-  <p><%= animal.name %></p>
-  <p><%= animal.sex %></p>
-  <p><%= animal.age %></p>
-  <p><%= animal.character %></p>
-<% end %>
+<div>
+  <% @animals.each do |animal| %>
+  <div>
+    <%= link_to user_animal_path(user_id: animal.user_id, id: animal.id) do %>
+      <%= image_tag animal.get_animal_image(100,100) %>
+      <%= animal.name %>
+    <% end %>
+  </div>
+  <% end %>
+</div>

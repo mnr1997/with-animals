@@ -7,17 +7,19 @@ class AnimalsController < ApplicationController
     @animal = Animal.new(animal_params)
     @animal.user_id = current_user.id
     if @animal.save
-      redirect_to user_animal_path
+      redirect_to posts_path
     else
       render :new
     end
   end
 
   def index
-    @animals = Animal.all
+    user = User.find(params[:user_id])
+    @animals = user.animals
   end
 
   def show
+    @user = User.find(params[:user_id])
     @animal = Animal.find(params[:id])
   end
 
