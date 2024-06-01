@@ -1,4 +1,8 @@
-<h1>Animals#index</h1>
+<h1><%= @user.name %>の動物</h1>
+
+<% if @user == current_user %>
+  <%= link_to "登録", new_user_animal_path %>  
+<% end %>
 
 <div>
   <% @animals.each do |animal| %>
@@ -10,3 +14,5 @@
   </div>
   <% end %>
 </div>
+
+<%= link_to "戻る", user_path(@user.id) %>

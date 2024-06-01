@@ -5,7 +5,11 @@
   <p><%= @animal.sex %></p>
   <p><%= @animal.age %></p>
   <p><%= @animal.character %></p>
-  
+
+<% if @user == current_user %>
+  <%= link_to "編集", edit_user_animal_path %>
+<% end %>
+
 <%= link_to "戻る", user_animals_path(@user.id) %>
 
 
