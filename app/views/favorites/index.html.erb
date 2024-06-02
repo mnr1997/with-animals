@@ -1,0 +1,16 @@
+<h2>いいね一覧</h2>
+
+
+<% if @posts.present? %>
+  <% @posts.each do |post| %>
+  <div>
+    <%= link_to post_path(post.id) do %>
+      <%= image_tag post.get_image(200,200) %>
+    <% end %>
+      <p><%= post.caption %></p>
+      <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
+  </div>
+  <% end %>
+<% else %>
+  <%= flash.now[:notice] %>
+<% end %>

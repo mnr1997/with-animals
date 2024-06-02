@@ -24,7 +24,7 @@ end
 james.animals.find_or_create_by!(name: "タマ") do |animal|
   animal.sex = 1
   animal.age = "2歳"
-  animal.character = "さみじがりや"
+  animal.character = "さみしがりや"
 end
 
 puts "dataの作成に成功しました"

@@ -7,6 +7,7 @@
   <% if @user == current_user %>
   <% unless @user.guest_user? %>
 　  <%= link_to "プロフィール編集", edit_user_path %>
+　  <%= link_to "お気に入り", user_favorites_path(@user.id) %>
   <% end %>
   <% end %>
   

@@ -12,4 +12,14 @@ class FavoritesController < ApplicationController
     favorite.destroy
     redirect_to post_path(post)
   end
+  
+  def index
+    @user = User.find(params[:user_id])
+    @favorites = @user.favorites
+    if @favorites.present?
+      @posts = @favorites.map {|favorite| favorite.post }
+    else
+      @posts = []
+    end
+  end
 end

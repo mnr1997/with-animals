@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show, :edit, :update] do
-    get :favorite_posts, :following, :followed
+    get :following, :followed
     resources :animals, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :favorites, only: [:index]
     collection do
       get :confirm
     end
