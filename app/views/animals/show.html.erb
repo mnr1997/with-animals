@@ -14,13 +14,4 @@
 
 <%= link_to "戻る", user_animals_path(@user.id) %>
 
-<% @posts.each do |post| %>
-  <div>
-  <%= link_to post_path(post.id) do %>
-    <%= image_tag post.get_image(200,200) %>
-  <% end %>
-    <p><%= post.caption %></p>
-    <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
-</div>
-  
-<% end %>
+<%= render 'posts/list', posts: @posts %>
