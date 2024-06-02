@@ -11,5 +11,11 @@
 <%= form_with model: @post do |f| %>
   <h4>本文</h4>
   <%= f.text_area :caption %>
+  
+  <%= f.label :animal_ids %>
+    <div>
+      <%= f.collection_check_boxes :animal_ids, @animals, :id, :name %>
+    </div>
+    
   <%= f.submit '保存' %>
 <% end %>

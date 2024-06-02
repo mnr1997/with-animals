@@ -22,7 +22,7 @@ class AnimalsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @animal = Animal.find(params[:id])
-    
+    @posts = @animal.posts
   end
 
   def edit
