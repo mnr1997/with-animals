@@ -1,6 +1,7 @@
 class AnimalsController < ApplicationController
   def new
     @animal = Animal.new
+    @categories = Category.all
   end
 
   def create
@@ -10,6 +11,7 @@ class AnimalsController < ApplicationController
       user = User.find(params[:user_id])
       redirect_to user_animals_path(user.id)
     else
+      @categories = Category.all
       render :new
     end
   end
@@ -28,6 +30,7 @@ class AnimalsController < ApplicationController
   def edit
     @user = User.find(params[:user_id])
     @animal = Animal.find(params[:id])
+    @categories = Category.all
   end
   
   def update
@@ -36,6 +39,7 @@ class AnimalsController < ApplicationController
     if animal.update(animal_params)
       redirect_to user_animal_path(user_id: animal.user_id, id: animal.id)
     else
+      @categories = Category.all
       render :edit
     end
   end
@@ -43,6 +47,6 @@ class AnimalsController < ApplicationController
   private
 
   def animal_params
-    params.require(:animal).permit(:image, :name, :sex, :age, :character)
+    params.require(:animal).permit(:animalimage, :name, :sex, :age, :character, :category_id)
   end
 end

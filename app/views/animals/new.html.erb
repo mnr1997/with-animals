@@ -23,6 +23,10 @@
     性格<%= f.text_field :character %>
   </div>
   
+  <div>
+    カテゴリー
+    <%= f.collection_radio_buttons :category_id, @categories, :id, :name %>
+  </div>
 
   <%= f.submit '投稿' %>
 

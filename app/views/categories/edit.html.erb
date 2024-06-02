@@ -1,4 +1,12 @@
 <h2>カテゴリー編集</h2>
+<% if @category.errors.any? %>
+  <%= @category.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @category.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_with model: @category do |f| %>
   <p>カテゴリー名：<%= f.text_field :name %></p>
