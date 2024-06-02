@@ -4,10 +4,25 @@
   <h4>画像</h4>
   <%= f.file_field :image, accept: "image/*" %>
 
-  名前<%= f.text_field :name %>
-  性別<%= f.text_field :sex %>
-  年齢<%= f.text_field :age %>
-  性格<%= f.text_field :character %>
+  <div>
+    名前<%= f.text_field :name %>
+  </div>
+  <div>
+    性別<br>
+    <%= f.radio_button :sex, Animal.sexes.key(0) %>
+    <%= f.label :sex_male, Animal.sexes_i18n[:male] %><br>
+    <%= f.radio_button :sex, Animal.sexes.key(1) %>
+    <%= f.label :sex_female, Animal.sexes_i18n[:female] %><br>
+    <%= f.radio_button :sex, Animal.sexes.key(2) %>
+    <%= f.label :sex_unknown, Animal.sexes_i18n[:unknown] %><br>
+  </div>
+  <diiv>
+    年齢<%= f.text_field :age %>
+  </diiv>
+  <div>
+    性格<%= f.text_field :character %>
+  </div>
+  
 
   <%= f.submit '投稿' %>
 
