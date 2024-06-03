@@ -14,6 +14,11 @@ class CategoriesController < ApplicationController
     @category = Category.new
     @categories = Category.all
   end
+  
+  def show
+    @category = Category.find(params[:id])
+    @posts = @category.category_posts
+  end
 
   def edit
     @category = Category.find(params[:id])

@@ -15,7 +15,9 @@
 
 <% @categories.each do |category| %>
   <p>
+    <%= link_to category_path(category) do %>
     <%= category.name %>
+    <% end %>
     <%= link_to "編集", edit_category_path(category) %>
   </p>
 <% end %>
