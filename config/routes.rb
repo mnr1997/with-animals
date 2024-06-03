@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update] do
     resources :animals, only: [:index]
     resources :favorites, only: [:index]
+    resources :relationships, only: [:create, :destroy]
     get :following
     get :followed
     collection do

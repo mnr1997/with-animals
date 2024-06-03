@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :animals, dependent: :destroy
   has_many :favorite_posts, through: :favorites, source: :post
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "following_user_id", dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_user_id", dependent: :destroy
+  has_many :following_users, through: :active_relationships, source: :followed_user
+  has_many :followed_users, through: :passive_relationships, source: :following_user
 
   validates :name, presence: true
 
@@ -33,6 +37,18 @@ class User < ApplicationRecord
 
   def guest_user?
     email == GUEST_USER_EMAIL
+  end
+  
+  def follow(user)
+    active_relationships.create(followed_user_id: user.id)
+  end
+  
+  def unfollow(user)
+    active_relationships.find_by(followed_user_id: user.id).destroy
+  end
+  
+  def following?(user)
+    following_users.include?(user)
   end
 
 end

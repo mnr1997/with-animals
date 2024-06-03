@@ -27,4 +27,10 @@ james.animals.find_or_create_by!(name: "タマ") do |animal|
   animal.character = "さみしがりや"
 end
 
+Category.find_or_create_by!(name: "犬") do |category|
+end
+
+Category.find_or_create_by!(name: "猫") do |category|
+end
+
 puts "dataの作成に成功しました"
