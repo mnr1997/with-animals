@@ -1,3 +1,8 @@
 <h1>Posts#index</h1>
 
+<%= form_with url: posts_path, method: :get do |f| %>
+  <%= f.text_field :caption %>
+  <%= f.submit "検索" %>
+<% end %>
+
 <%= render 'list', posts: @posts %>

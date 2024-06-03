@@ -6,8 +6,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.new(post_params)
     if @post.save
       redirect_to posts_path
     else
@@ -17,7 +16,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    if params[:caption].present?
+      @posts = Post.where("caption LIKE ?", "%#{params[:caption]}%")
+    else
+      @posts = Post.all
+    end
   end
 
   def show

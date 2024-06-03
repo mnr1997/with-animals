@@ -1,6 +1,6 @@
 <h1>Animals#edit</h1>
-<%= form_with model: @animal, url: user_animal_path do |f| %>
-  
+<%= form_with model: @animal do |f| %>
+
   <label for="inputImage">AnimalImage</label>
   <%= f.file_field :animal_image, placeholder: "動物画像", accept: "image/*" %>
   <label for="inputName">名前</label>

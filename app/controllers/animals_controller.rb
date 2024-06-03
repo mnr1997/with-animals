@@ -1,15 +1,15 @@
 class AnimalsController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
+  
   def new
     @animal = Animal.new
     @categories = Category.all
   end
 
   def create
-    @animal = Animal.new(animal_params)
-    @animal.user_id = current_user.id
+    @animal = current_user.animals.new(animal_params)
     if @animal.save
-      user = User.find(params[:user_id])
-      redirect_to user_animals_path(user.id)
+      redirect_to user_animals_path(current_user)
     else
       @categories = Category.all
       render :new
@@ -22,22 +22,19 @@ class AnimalsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
     @animal = Animal.find(params[:id])
     @posts = @animal.posts
   end
 
   def edit
-    @user = User.find(params[:user_id])
     @animal = Animal.find(params[:id])
     @categories = Category.all
   end
   
   def update
-    user = User.find(params[:user_id])
     animal = Animal.find(params[:id])
     if animal.update(animal_params)
-      redirect_to user_animal_path(user_id: animal.user_id, id: animal.id)
+      redirect_to animal_path(animal)
     else
       @categories = Category.all
       render :edit
@@ -47,6 +44,13 @@ class AnimalsController < ApplicationController
   private
 
   def animal_params
-    params.require(:animal).permit(:animalimage, :name, :sex, :age, :character, :category_id)
+    params.require(:animal).permit(:animal_image, :name, :sex, :age, :character, :category_id)
+  end
+  
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to user_path(current_user)
+    end
   end
 end

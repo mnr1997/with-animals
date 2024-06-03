@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
 
-  resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+  resources :posts do
     collection do
       get :rank
     end
@@ -14,15 +14,17 @@ Rails.application.routes.draw do
     resource :favorite, only: [:create, :destroy]
   end
 
+  resources :animals, only: [:show, :edit, :update, :new, :create]
+  
   resources :users, only: [:index, :show, :edit, :update] do
-    get :following, :followed
-    resources :animals, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :animals, only: [:index]
     resources :favorites, only: [:index]
+    get :following
+    get :followed
     collection do
       get :confirm
     end
   end
-  
+
   resources :categories, only: [:create, :index, :edit, :update]
-  
 end

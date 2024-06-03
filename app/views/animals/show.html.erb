@@ -9,10 +9,10 @@
   <p>性格：<%= @animal.character %></p>
   <p>カテゴリー：<%= @animal.category&.name %></p>
 
-<% if @user == current_user %>
-  <%= link_to "編集", edit_user_animal_path %>
+<% if @animal.user == current_user %>
+  <%= link_to "編集", edit_animal_path %>
 <% end %>
 
-<%= link_to "戻る", user_animals_path(@user.id) %>
+<%= link_to "戻る", user_animals_path(@animal.user) %>
 
 <%= render 'posts/list', posts: @posts %>
