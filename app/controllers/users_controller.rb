@@ -3,7 +3,12 @@ class UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   
   def index
-    @users = User.all
+    if params[:name].present?
+      @users = User.where("name LIKE ?", "%#{params[:name]}%")
+      @users = User.all if @users.empty?
+    else
+      @users = User.all
+    end
   end
 
   def show

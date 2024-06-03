@@ -1,5 +1,10 @@
 <h1>Users#index</h1>
 
+<%= form_with url: users_path, method: :get do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit "検索" %>
+<% end %>
+
 <% @users.each do |user| %>
   <div>
     <%= link_to user_path(user) do %>
