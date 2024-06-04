@@ -20,11 +20,9 @@ Rails.application.routes.draw do
     resources :animals, only: [:index]
     resources :favorites, only: [:index]
     resources :relationships, only: [:create, :destroy]
-    get :following
-    get :followed
-    collection do
-      get :confirm
-    end
+    get 'following_users' => 'relationships#following', as: 'following'
+    get 'followed_users' => 'relationships#followed', as: 'followed'
+    get :confirm
   end
 
   resources :categories, only: [:create, :index, :show, :edit, :update]
