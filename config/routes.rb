@@ -9,30 +9,34 @@ Rails.application.routes.draw do
     resources :users, only: [:destroy]
   end
   
-  root to: "homes#top"
-  devise_for :users
-  devise_scope :user do
-    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
-  end
-
-  resources :posts do
-    collection do
-      get :rank
-    end
-    resources :comments, only: [:create, :destroy]
-    resource :favorite, only: [:create, :destroy]
-  end
-
-  resources :animals, only: [:show, :edit, :update, :new, :create]
   
-  resources :users, only: [:index, :show, :edit, :update] do
-    resources :animals, only: [:index]
-    resources :favorites, only: [:index]
-    resources :relationships, only: [:create, :destroy]
-    get 'following_users' => 'relationships#following', as: 'following'
-    get 'followed_users' => 'relationships#followed', as: 'followed'
-    get :confirm
-  end
+  scope module: :public do
+    root to: "homes#top"
+    devise_for :users
+    devise_scope :user do
+      post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+    end
+  
+    resources :posts do
+      collection do
+        get :rank
+      end
+      resources :comments, only: [:create, :destroy]
+      resource :favorite, only: [:create, :destroy]
+    end
 
-  resources :categories, only: [:create, :index, :show, :edit, :update]
+    resources :animals, only: [:show, :edit, :update, :new, :create]
+  
+    resources :users, only: [:index, :show, :edit, :update] do
+      resources :animals, only: [:index]
+      resources :favorites, only: [:index]
+      resources :relationships, only: [:create, :destroy]
+      get 'following_users' => 'relationships#following', as: 'following'
+      get 'followed_users' => 'relationships#followed', as: 'followed'
+     get :confirm
+    end
+
+    resources :categories, only: [:create, :index, :show, :edit, :update]
+  e
+    
 end

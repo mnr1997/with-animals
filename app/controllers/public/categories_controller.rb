@@ -1,4 +1,4 @@
-class CategoriesController < ApplicationController
+class Public::CategoriesController < ApplicationController
   
   def create
     @category = Category.new(category_params)
