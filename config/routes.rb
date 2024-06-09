@@ -37,6 +37,6 @@ Rails.application.routes.draw do
     end
 
     resources :categories, only: [:create, :index, :show, :edit, :update]
-  e
+  end
     
 end

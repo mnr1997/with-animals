@@ -1,7 +1,7 @@
 <h1><%= @category.name %>の投稿一覧</h1>
 
 <% if @posts.present? %>
-  <%= render 'posts/list', posts: @posts %>
+  <%= render 'public/posts/list', posts: @posts %>
 <% else %>
   <%= flash.now[:notice] %>
 <% end %>

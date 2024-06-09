@@ -2,7 +2,7 @@
 
 
 <% if @posts.present? %>
-  <%= render 'posts/list', posts: @posts %>
+  <%= render 'puclic/posts/list', posts: @posts %>
 <% else %>
   <%= flash.now[:notice] %>
 <% end %>
