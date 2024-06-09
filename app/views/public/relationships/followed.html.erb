@@ -1,7 +1,9 @@
 <h2>フォロワー一覧</h2>
 
+<%= link_to "戻る", user_path(@user) %>
+
 <% if @users.exists? %>
-  <%= render 'users/user', users: @users %>
+  <%= render 'public/users/user', users: @users %>
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>
