@@ -33,7 +33,6 @@ Rails.application.routes.draw do
       resources :relationships, only: [:create, :destroy]
       get 'following_users' => 'relationships#following', as: 'following'
       get 'followed_users' => 'relationships#followed', as: 'followed'
-     get :confirm
     end
 
     resources :categories, only: [:create, :index, :show, :edit, :update]
