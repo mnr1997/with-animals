@@ -5,15 +5,15 @@ class Public::UsersController < ApplicationController
   def index
     if params[:name].present?
       @users = User.where("name LIKE ?", "%#{params[:name]}%")
-      @users = User.all if @users.empty?
+      @users = User.page(params[:page]) if @users.empty?
     else
-      @users = User.all
+      @users = User.page(params[:page])
     end
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page])
   end
 
   def edit

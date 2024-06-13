@@ -10,7 +10,11 @@ class Post < ApplicationRecord
   validates :caption, presence: true
 
   def get_image(width, height)
-    image.variant(resize_to_limit: [width, height]).processed
+    if image.blob.variable?
+    image.variant(resize_to_fit: [width, height]).processed
+    else
+    image
+    end
   end
 
   def favorited_by?(user)
