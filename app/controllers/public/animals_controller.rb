@@ -23,7 +23,7 @@ class Public::AnimalsController < ApplicationController
 
   def show
     @animal = Animal.find(params[:id])
-    @posts = @animal.posts
+    @posts = @animal.posts.page(params[:page])
   end
 
   def edit

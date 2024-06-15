@@ -10,7 +10,7 @@
   <p>カテゴリー：<%= @animal.category&.name %></p>
 
 <% if @animal.user == current_user %>
-  <%= link_to "編集", edit_animal_path %>
+  <%= link_to "編集", edit_animal_path(@animal) %>
 <% end %>
 
 <%= link_to "戻る", user_animals_path(@animal.user) %>
