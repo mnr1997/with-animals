@@ -58,7 +58,7 @@
     </div>
     <div class="flex-fill">
       <%= form_with model: [@post, @comment] do |f| %>
-        <%= f.text_area :comment, rows: '2', placeholder: "コメントをここに" %>
+        <%= f.text_area :comment, rows: '2', placeholder: "コメント" %>
         <%= f.submit "送信する" %>
       <% end %>
     </div>

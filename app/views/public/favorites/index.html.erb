@@ -2,7 +2,9 @@
 
 
 <% if @posts.present? %>
-  <%= render 'puclic/posts/list', posts: @posts %>
+  <%= render 'public/posts/list', posts: @posts %>
 <% else %>
   <%= flash.now[:notice] %>
 <% end %>
+
+<%= link_to "戻る", user_path(current_user) %>

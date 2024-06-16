@@ -1,39 +1,46 @@
-<h2>ユーザー</h2>
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <p>introduction:<%= @user.introduction %></p>
-</div>
-  
+<div class="container">
+  <div>
+    <h3><%= @user.name %></h3>
+    <%= image_tag @user.get_profile_image(100,100), size: "100x100", class: 'object-fit-contain mt-3 rounded-circle' %>
+    <p>introduction:<%= @user.introduction %></p>
+  </div>
+  <div>
   <% if current_user != @user %>
     <% if current_user.following?(@user) %>
-      <%= link_to "フォロー外す", user_relationship_path(@user), method: :delete, class: "btn btn-info" %>
+      <%= link_to "フォロー外す", user_relationship_path(@user), method: :delete, class: "btn btn-outline-info" %>
     <% else %>
-      <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-success" %>
+      <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-info" %>
     <% end %>
 　<% end %>
-　
-　<div>フォロー数: 
-　  <%= link_to user_following_path(@user) do %>
-　    <%= @user.following_users.count %>
-　  <% end %>
-　 </div>
-　<div>フォロワー数: 
-　  <%= link_to user_followed_path(@user) do %>
-　    <%= @user.followed_users.count %>
-　  <% end %>
+　</div>
+　<div class="d-flex">
+  　<div>フォロー数: 
+  　  <%= link_to user_following_path(@user) do %>
+  　    <%= @user.following_users.count %>
+  　  <% end %>
+  　 </div>
+  　<div>フォロワー数: 
+  　  <%= link_to user_followed_path(@user) do %>
+  　    <%= @user.followed_users.count %>
+  　  <% end %>
+    </div>
   </div>
 
   <% if @user == current_user %>
   <% unless @user.guest_user? %>
-　  <%= link_to "プロフィール編集", edit_user_path %>
-　  <%= link_to "お気に入り", user_favorites_path(@user) %>
+　  <div><%= link_to "プロフィール編集", edit_user_path %></div>
+　  <div><%= link_to "お気に入り", user_favorites_path(@user) %></div>
   <% end %>
   <% end %>
   
-<div>
-  <%= link_to "動物一覧", user_animals_path(@user) %>
+<div class="my-3">
+  <%= link_to user_animals_path(@user) do %>
+    <p><%= @user.name %>の動物</p>
+  <% end %>
 </div>
 
-<h4>投稿一覧</h4>
+
+
 <%= render 'public/posts/list', posts: @posts %>
+</div>
+
