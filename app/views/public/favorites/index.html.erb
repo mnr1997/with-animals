@@ -1,5 +1,8 @@
-<h2>いいね一覧</h2>
-
+<div class="container">
+<h2>お気に入り</h2>
+<div class="my-2">
+<%= link_to "戻る", user_path(current_user) %>
+</div>
 
 <% if @posts.present? %>
   <%= render 'public/posts/list', posts: @posts %>
@@ -7,4 +10,4 @@
   <%= flash.now[:notice] %>
 <% end %>
 
-<%= link_to "戻る", user_path(current_user) %>
+</div>
