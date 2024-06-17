@@ -1,6 +1,6 @@
 <h1>Animals#new</h1>
 
-<%= form_with model: @animal, url: user_animals_path do |f| %>
+<%= form_with model: @animal do |f| %>
   <h4>画像</h4>
   <%= f.file_field :image, accept: "image/*" %>
 

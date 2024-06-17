@@ -1,12 +1,18 @@
 <div class="container">
-  <h2>投稿一覧</h2>
-
-  <%= form_with url: posts_path, method: :get do |f| %>
-    <%= f.text_field :caption, value: params[:caption] %>
-    <%= f.submit "検索" %>
-  <% end %>
-
-  <%= link_to "カテゴリー検索", categories_path %>
+  
+  <div class="d-md-flex my-5">
+    <h3 class="mr-5">投稿一覧</h3>
+    <div class="mr-5">
+    <%= form_with url: posts_path, method: :get do |f| %>
+      <%= f.text_field :caption, value: params[:caption] %>
+      <%= f.submit "検索" %>
+    <% end %>
+    </div>
+    <div class="my-auto">
+    <%= link_to "カテゴリー検索", categories_path %>
+    </div>
+  </div>
+  
 
   <%= render 'list', posts: @posts %>
 </div>
