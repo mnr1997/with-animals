@@ -1,20 +1,18 @@
-<div class="col-md-6 mx-auto mt-5">
-  
-  
-  
+<div class="container">
   <div class="row">
-    <div class="ml-3">
-      <%= link_to "ログイン",  new_user_session_path, class: "btn btn-info" %>
-    </div>
-    <div class="ml-3">
-      <%= link_to "新規登録",  new_user_registration_path, class: "btn btn-success" %>
-    </div>
-    <div class="ml-3">
-      <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary sign_in", method: :post %>
+    
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto my-5">
+      <div class="mb-3">
+        <%= link_to "ユーザーログイン",  new_user_session_path, class: "btn btn-block btn-info" %>
+      </div>
+      <div class="mb-3">
+        <%= link_to "新規登録",  new_user_registration_path, class: "btn btn-block btn-success" %>
+      </div>
+      <div class="mb-3">
+        <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-block btn-secondary sign_in", method: :post %>
+      </div>
     </div>
   </div>
-  
 </div>
-
  
   
