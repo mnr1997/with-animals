@@ -1,9 +1,14 @@
-<h2>フォロー一覧</h2>
-
-<%= link_to "戻る", user_path(@user) %>
-
-<% if @users.exists? %>
-  <%= render 'public/users/user', users: @users %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+<div class="container">
+  <h3 class="mt-5">フォロー一覧</h3>
+  
+  <%= link_to user_path(@user) do %>
+    <i class="fa-solid fa-arrow-left-long">戻る</i>
+  <% end %>
+  <div class="my-5">
+  <% if @users.exists? %>
+    <%= render 'public/users/user', users: @users %>
+  <% else %>
+    <p>ユーザーはいません</p>
+  <% end %>
+  </div>
+</div>
