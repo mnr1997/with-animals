@@ -1,7 +1,7 @@
 <div class="container">
 
 <h3 class="mt-5"><%= @user.name %>の動物</h3>
-
+<div>
 <%= link_to user_path(@user) do %>
   <i class="fa-solid fa-arrow-left-long">戻る</i>
 <% end %>
@@ -9,7 +9,7 @@
 <% if @user == current_user %>
   <%= link_to "登録", new_animal_path, class: "btn btn-secondary ml-3" %>  
 <% end %>
-
+</div>
 <div>
   <% @animals.each do |animal| %>
   <div class="my-auto">
