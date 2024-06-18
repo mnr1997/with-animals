@@ -1,40 +1,60 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-10 col-md-5 mx-auto text-center">
-      <h2>新規登録</h2>
-      
+    <div class="col-md-5 col-sm-10 col-10 mx-md-auto mx-sm-auto mx-auto text-center shadow-lg rounded px-0 my-5"> 
+      <h2 class="pt-4">新規登録</h2>
+      <div class="form-body p-4">
       <%= form_with model: @user, url: user_registration_path do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-      
-        <div class="field">
-          <%= f.label :name %><br>
-          <%= f.text_field :name %>
+        <%= render "public/shared/error_messages", resource: resource %>
+        <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text form-control">
+          <%= f.label :name do %>
+          <i class="fa-solid fa-user"></i>
+          <% end %>
+          </span>
+          </div>
+          <%= f.text_field :name, placeholder: "名前", class: "form-control" %>
+          
         </div>
         
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+           <span class="input-group-text form-control">
+             <%= f.label :email do %>
+             <i class="fa-solid fa-envelope"></i>
+             <% end %>
+           </span>
+          </div>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
         </div>
       
-        <div class="field">
-          <%= f.label :password %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+           <span class="input-group-text form-control">
+          <%= f.label :password do %>
+            <i class="fa-solid fa-lock"></i>
+          <% end %>
+          </span>
+          </div>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード（#{@minimum_password_length}文字以上）", class: "form-control" %>
         </div>
-      
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+       
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+           <span class="input-group-text form-control">
+          <%= f.label :password_confirmation do %>
+            <i class="fa-solid fa-square-check"></i>
+          <% end %>
+          </span>
+          </div>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード確認", class: "form-control" %>
         </div>
       
         <div class="actions">
-          <%= f.submit "Sign up" %>
+          <%= f.submit "登録", class: "btn btn-block btn-success" %>
         </div>
       <% end %>
-      
-      <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
 </div>

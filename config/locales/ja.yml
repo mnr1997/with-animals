@@ -10,6 +10,12 @@ ja:
       post:
         image: "画像"
         caption: "本文"
+      animal:
+        name: "名前"
+        sex: "性別"
+        age: "年齢"
+        character: "性格"
+        category_id: "カテゴリー"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
