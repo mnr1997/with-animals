@@ -17,7 +17,7 @@ class Public::CategoriesController < ApplicationController
   
   def show
     @category = Category.find(params[:id])
-    @posts = @category.category_posts
+    @posts = @category.category_posts.page(params[:page])
   end
 
   def edit

@@ -1,4 +1,8 @@
-<h1><%= @category.name %>の投稿一覧</h1>
+<div class="container">
+  <h3 class="mt-5"><%= @category.name %>の投稿一覧</h3>
+  <%= link_to categories_path do %>
+    <i class="fa-solid fa-arrow-left-long">戻る</i>
+  <% end %>
 
 <% if @posts.present? %>
   <%= render 'public/posts/list', posts: @posts %>
@@ -6,4 +10,5 @@
   <%= flash.now[:notice] %>
 <% end %>
 
-<%= link_to "戻る", categories_path %>
+
+</div>

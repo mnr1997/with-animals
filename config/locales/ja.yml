@@ -16,6 +16,8 @@ ja:
         age: "年齢"
         character: "性格"
         category_id: "カテゴリー"
+      category:
+        name: "カテゴリー名"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

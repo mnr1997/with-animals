@@ -1,23 +1,26 @@
-<h2>カテゴリー</h2>
+<div class="container">
+<h3 class="mt-5">カテゴリー</h3>
 <% if @category.errors.any? %>
+<ul class="alert alert-danger" role="alert">
+  <h6 class="alert-heading">
   <%= @category.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @category.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+  </h6>
+  <% @category.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
 <% end %>
 
 <%= form_with model: @category do |f| %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, placeholder: "カテゴリー名" %>
   <%= f.submit "新規登録" %>
 <% end %>
 
 <% @categories.each do |category| %>
-  <p>
+  <div class="my-3">
     <%= link_to category_path(category) do %>
     <%= category.name %>
     <% end %>
-    <%= link_to "編集", edit_category_path(category) %>
-  </p>
+    <%= link_to "編集", edit_category_path(category), class: "btn btn-outline-secondary ml-5" %>
+  </div>
 <% end %>

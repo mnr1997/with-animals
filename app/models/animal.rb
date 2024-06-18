@@ -5,6 +5,8 @@ class Animal < ApplicationRecord
   has_many :posts, through: :animal_posts, source: :post
   
   enum sex: { male: 0, female: 1, unknown: 2 }
+  
+  validates :name, presence: true
 
   has_one_attached :animal_image
 
