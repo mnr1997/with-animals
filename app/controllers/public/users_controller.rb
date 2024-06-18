@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
   
   def index
     if params[:name].present?
-      @users = User.where("name LIKE ?", "%#{params[:name]}%")
+      @users = User.where("name LIKE ?", "%#{params[:name]}%").page(params[:page])
       @users = User.page(params[:page]) if @users.empty?
     else
       @users = User.page(params[:page])

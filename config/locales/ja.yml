@@ -18,6 +18,10 @@ ja:
         category_id: "カテゴリー"
       category:
         name: "カテゴリー名"
+      user:
+        name: "名前"
+        profile_image: "プロフィール画像"
+        introduction: "自己紹介"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

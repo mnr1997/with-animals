@@ -17,7 +17,7 @@ class Public::PostsController < ApplicationController
 
   def index
     if params[:caption].present?
-      @posts = Post.where("caption LIKE ?", "%#{params[:caption]}%")
+      @posts = Post.where("caption LIKE ?", "%#{params[:caption]}%").page(params[:page])
       @posts = Post.page(params[:page]) if @posts.empty?
     else
       @posts = Post.page(params[:page])
