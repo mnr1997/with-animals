@@ -1,7 +1,8 @@
 <div class="container">
   
-<h3 class="mt-5"><%= @animal.name %>のプロフィール</h3>
-
+  <div class="h1"><%= @animal.name %>のプロフィール</div>
+  
+  <div>
   <%= image_tag @animal.get_animal_image(200,200), size: "200x200", class: 'object-fit-contain rounded-circle' %>
   <p>名前：<%= @animal.name %></p>
   <p>
@@ -10,17 +11,19 @@
   <p>年齢：<%= @animal.age %></p>
   <p>性格：<%= @animal.character %></p>
   <p>カテゴリー：<%= @animal.category&.name %></p>
-
-<%= link_to user_animals_path(@animal.user) do %>
-  <i class="fa-solid fa-arrow-left-long">戻る</i>
-<% end %>
-
-<% if @animal.user == current_user %>
-  <%= link_to "編集", edit_animal_path(@animal), class: "btn btn-outline-secondary" %>
+  </div>
+  <div class="my-3">
+    <% if @animal.user == current_user %>
+      <%= link_to "編集", edit_animal_path(@animal), class: "btn btn-outline-secondary" %>
+    <% end %>
+  </div>
   
-<% end %>
-
-<%= render 'public/posts/list', posts: @posts %>
-
+  <div>
+    <%= link_to user_animals_path(@animal.user) do %>
+    <i class="fa-solid fa-arrow-left-long">戻る</i>
+    <% end %>
+  </div>
+  
+  <%= render 'public/posts/list', posts: @posts %>
 　
 </div>

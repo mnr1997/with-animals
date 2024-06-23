@@ -1,26 +1,28 @@
 <div class="container">
-<h3 class="mt-5">カテゴリー</h3>
-<% if @category.errors.any? %>
-<ul class="alert alert-danger" role="alert">
-  <h6 class="alert-heading">
-  <%= @category.errors.count %>件のエラーが発生しました
-  </h6>
-  <% @category.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-</ul>
-<% end %>
-
-<%= form_with model: @category do |f| %>
-  <%= f.text_field :name, placeholder: "カテゴリー名" %>
-  <%= f.submit "新規登録" %>
-<% end %>
-
-<% @categories.each do |category| %>
-  <div class="my-3">
-    <%= link_to category_path(category) do %>
-    <%= category.name %>
+  <div class="h3 ">カテゴリー</div>
+  <% if @category.errors.any? %>
+    <ul class="alert alert-danger" role="alert">
+      <div class="h6 alert-heading">
+        <%= @category.errors.count %>件のエラーが発生しました
+      </div>
+        <% @category.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+        <% end %>
+    </ul>
     <% end %>
-    <%= link_to "編集", edit_category_path(category), class: "btn btn-outline-secondary ml-5" %>
+
+    <%= form_with model: @category do |f| %>
+      <%= f.text_field :name, placeholder: "カテゴリー名" %>
+      <%= f.submit "新規登録" %>
+    <% end %>
+
+    <% @categories.each do |category| %>
+      <div class="my-3">
+        <%= link_to category_path(category) do %>
+        <%= category.name %>
+        <% end %>
+        <%= link_to "編集", edit_category_path(category), class: "btn btn-outline-secondary ml-5" %>
+      </div>
+    <% end %>
+    
   </div>
-<% end %>

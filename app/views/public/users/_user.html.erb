@@ -1,23 +1,23 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5 col-sm-10">
-  <table class="table">
-    <tbody>
-    <% users.each do |user| %>
-      <tr>
-        <td><%= link_to user_path(user) do %>
-          <%= image_tag user.get_profile_image(100,100), size: "100x100", class: 'object-fit-contain rounded-circle' %>
+      <table class="table">
+        <tbody>
+        <% users.each do |user| %>
+          <td>
+            <%= link_to user_path(user) do %>
+              <%= image_tag user.get_profile_image(100,100), size: "100x100", class: 'object-fit-contain rounded-circle' %>
+            <% end %>
+          </td>
+          <td class="align-middle">
+            <%= link_to user_path(user) do %>
+              <%= user.name %>
+            <% end %>
+          </td>
         <% end %>
-        </td>
-        <td class="align-middle">
-          <%= link_to user_path(user) do %>
-            <%= user.name %>
-          <% end %>
-        </td>
-    <% end %>
-    </tbody>
-    </table>
-  <%= paginate users %>
+        </tbody>
+      </table>
+    <%= paginate users %>
+    </div>
   </div>
-</div>
 </div>

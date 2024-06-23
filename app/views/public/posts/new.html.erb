@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 mx-auto max-w-480 shadow-lg rounded my-5">
-      <h5 class="text-dark bg-light p-4 mb-0">新規投稿</h5>
+    <div class="col-sm-12 mx-auto max-w-480 shadow-lg rounded">
+      <div class="h5 text-dark bg-light p-4 mb-0">新規投稿</div>
       <div class="form-body p-4">
         <% if @post.errors.any? %>
           <ul class="alert alert-danger" role="alert">
-            <h6 class="alert-heading">
+            <div class="h6 alert-heading">
               <%= @post.errors.count %>件のエラーが発生しました
-            </h6>
+            </div>
             <% @post.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>

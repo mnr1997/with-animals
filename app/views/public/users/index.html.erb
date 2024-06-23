@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="d-md-flex my-5">
-<h3 class="mr-5">ユーザー一覧</h3>
+  <div class="d-md-flex">
+    <h3 class="h3 mr-5">ユーザー一覧</h3>
 
-<%= form_with url: users_path, method: :get do |f| %>
-  <%= f.text_field :name, value: params[:name] %>
-  <%= f.submit "検索" %>
-<% end %>
-</div>
+    <%= form_with url: users_path, method: :get do |f| %>
+      <%= f.text_field :name, value: params[:name] %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
 <%= render 'user', users: @users %>
 </div>

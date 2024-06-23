@@ -1,20 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5 col-sm-10 col-10 mx-md-auto mx-sm-auto mx-auto text-center shadow-lg rounded px-0 my-5"> 
-      <h2 class="pt-4">新規登録</h2>
+    <div class="col-md-5 col-sm-10 col-10 mx-md-auto mx-sm-auto mx-auto text-center shadow-lg rounded px-0"> 
+      <div class="h2 pt-4">新規登録</div>
       <div class="form-body p-4">
       <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text form-control">
-          <%= f.label :name do %>
-          <i class="fa-solid fa-user"></i>
-          <% end %>
-          </span>
+          <div class="input-group-prepend">
+            <span class="input-group-text form-control">
+            <%= f.label :name do %>
+            <i class="fa-solid fa-user"></i>
+            <% end %>
+            </span>
           </div>
           <%= f.text_field :name, placeholder: "名前", class: "form-control" %>
-          
         </div>
         
         <div class="input-group mb-3">
@@ -31,21 +30,21 @@
         <div class="input-group mb-3">
           <div class="input-group-prepend">
            <span class="input-group-text form-control">
-          <%= f.label :password do %>
-            <i class="fa-solid fa-lock"></i>
-          <% end %>
-          </span>
+            <%= f.label :password do %>
+              <i class="fa-solid fa-lock"></i>
+            <% end %>
+            </span>
           </div>
           <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード（#{@minimum_password_length}文字以上）", class: "form-control" %>
         </div>
        
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-           <span class="input-group-text form-control">
-          <%= f.label :password_confirmation do %>
-            <i class="fa-solid fa-square-check"></i>
-          <% end %>
-          </span>
+            <span class="input-group-text form-control">
+              <%= f.label :password_confirmation do %>
+                <i class="fa-solid fa-square-check"></i>
+              <% end %>
+            </span>
           </div>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード確認", class: "form-control" %>
         </div>
