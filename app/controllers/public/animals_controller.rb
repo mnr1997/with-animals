@@ -41,6 +41,12 @@ class Public::AnimalsController < ApplicationController
     end
   end
   
+  def destroy
+    animal = Animal.find(params[:id])
+    animal.destroy
+    redirect_to user_animals_path(current_user)
+  end
+  
   private
 
   def animal_params

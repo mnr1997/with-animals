@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       resource :favorite, only: [:create, :destroy]
     end
 
-    resources :animals, only: [:show, :edit, :update, :new, :create]
+    resources :animals, only: [:show, :edit, :update, :new, :create, :destroy]
   
     resources :users, only: [:index, :show, :edit, :update] do
       resources :animals, only: [:index]

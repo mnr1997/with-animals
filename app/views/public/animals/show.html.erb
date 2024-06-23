@@ -15,6 +15,7 @@
   <div class="my-3">
     <% if @animal.user == current_user %>
       <%= link_to "編集", edit_animal_path(@animal), class: "btn btn-outline-secondary" %>
+      <%= link_to "削除", animal_path(@animal), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "本当に削除しますか？" %>
     <% end %>
   </div>
   

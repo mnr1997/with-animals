@@ -38,23 +38,24 @@
           <% end %>
     
           <p>コメント件数：<%= @post.comments.count %></p>
-          <div class="d-flex">
             <% @post.comments.each do |comment| %>
-              <div class="p-2">
-              <%= link_to user_path(comment.user.id) do %>
-                  <%= image_tag comment.user.get_profile_image(50,50), size: "50x50", class: 'object-fit-contain rounded-circle' %>
-                  <%= comment.user.name %>
-              <% end %>
-              </div>
-              <div class="my-auto p-2 flex-fill">
-                <%= comment.comment %>
-                <%= comment.created_at.strftime('%Y/%m/%d') %>
-                <% if comment.user == current_user %>
-                  <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+              <div class="d-flex">
+                <div class="p-2">
+                <%= link_to user_path(comment.user.id) do %>
+                    <%= image_tag comment.user.get_profile_image(50,50), size: "50x50", class: 'object-fit-contain rounded-circle' %>
+                    <%= comment.user.name %>
                 <% end %>
+                </div>
+                <div class="my-auto p-2 flex-fill">
+                  <%= comment.comment %>
+                  <%= comment.created_at.strftime('%Y/%m/%d') %>
+                  <% if comment.user == current_user %>
+                    <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+                  <% end %>
+                </div>
               </div>
             <% end %>
-          </div>
+          
           <div class="flex-fill">
             <%= form_with model: [@post, @comment] do |f| %>
               <%= f.text_area :comment, rows: '2', placeholder: "コメント" %>

@@ -16,9 +16,17 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <% if user_signed_in? %>
-          <h1><%= link_to "with Animals", posts_path %></h1>
+            <div>
+              <%= link_to posts_path do %>
+                <p class="h1 text-info">with Animals <i class="fa-solid fa-paw" style="color: #ffaddd;"></i></p>
+              <% end %>
+            </div>
           <% else %>
-          <h1><%= link_to "with Animals", root_path %></h1>
+            <div>
+              <%= link_to root_path do %>
+                <p class="h1 text-info">with Animals <i class="fa-solid fa-paw" style="color: #ffaddd;"></i></p>
+              <% end %>
+            </div>
           <% end %>
           
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +40,7 @@
               </li>
               <li class="nav-item my-auto p-2">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                
               </li>
               <li class="nav-item my-auto p-2">
                 <%= link_to user_path(current_user) do %>
@@ -63,7 +72,7 @@
       <div class="container">
         <div class="row">
           <div class="mx-auto">
-          <p>動物を感じることで生活に癒しを与えるSNS</p>
+          <p>動物で癒しを与えるSNS</p>
           </div>
         </div>
       </div>
