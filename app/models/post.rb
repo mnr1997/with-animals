@@ -8,7 +8,8 @@ class Post < ApplicationRecord
 
   validates :image, presence: true
   validates :caption, presence: true
-
+  validates :caption, length: { maximum: 200 }
+  
   def get_image(width, height)
     if image.blob.variable?
       image.variant(resize_to_fit: [width, height]).processed

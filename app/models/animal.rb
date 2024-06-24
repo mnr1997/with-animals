@@ -7,6 +7,7 @@ class Animal < ApplicationRecord
   enum sex: { male: 0, female: 1, unknown: 2 }
   
   validates :name, presence: true
+  validates :name, length: { maximum: 20 }
 
   has_one_attached :animal_image
 
