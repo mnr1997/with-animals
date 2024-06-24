@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Admin - Meshiterro</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
-<body>
-  <% if admin_signed_in? %>
-    <div class="text-right">
-      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
-    </div>
-  <% end %>
-  <%= yield %>
-</body>
+  <head>
+    <title>Admin - with_Animals</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <script src="https://kit.fontawesome.com/72700d4193.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <header class="shadow-sm">
+      <div class="container">
+      <% if admin_signed_in? %>
+        <div class="text-right my-auto p-2">
+          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+        </div>
+      <% end %>
+      </div>
+    </header>
+    <main class="my-5">
+      <%= yield %>
+    </main>
+  </body>
 </html>

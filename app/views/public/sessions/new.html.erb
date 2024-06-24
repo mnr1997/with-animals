@@ -9,29 +9,28 @@
           <div class="input-group-prepend">
            <span class="input-group-text form-control">
              <%= f.label :email do %>
-             <i class="fa-solid fa-envelope"></i>
+               <i class="fa-solid fa-envelope"></i>
              <% end %>
            </span>
           </div>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
-          
-          </div>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
+        </div>
      
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text form-control">
-                <%= f.label :password do %>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text form-control">
+              <%= f.label :password do %>
                 <i class="fa-solid fa-lock"></i>
-                <% end %>
-              </span>
-            </div>
-            <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "form-control" %>
+              <% end %>
+            </span>
           </div>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "form-control" %>
+        </div>
       
-          <div class="actions">
-            <%= f.submit "ログイン", class: "btn btn-block btn-info" %>
-          </div>
-        <% end %>
+        <div class="actions">
+          <%= f.submit "ログイン", class: "btn btn-block btn-info" %>
+        </div>
+      <% end %>
       </div>
     </div>
   </div>

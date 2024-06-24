@@ -1,9 +1,24 @@
-<h1>全ユーザー一覧</h1>
-<ul>
-  <% @users.each do |user| %>
-    <li>
-      <%= user.name %> - <%= user.email %>
-      <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
-    </li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 col-sm-10 mt-3">
+      <div class="h3">ユーザー一覧</div>
+      <table class="table mt-3">
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= user.name %>
+              </td>
+              <td>
+                <%= user.email %>
+              </td>
+              <td>
+                <%= link_to '削除', admin_user_path(user), method: :delete, class: "btn btn-outline-danger", data: { confirm: '本当に削除しますか？' } %>
+              </td>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @users %>
+    </div>
+  </div>
+</div>
