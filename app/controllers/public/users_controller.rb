@@ -1,4 +1,4 @@
-class Public::UsersController < ApplicationController
+class Public::UsersController < PublicController
   before_action :is_matching_login_user, only: [:edit, :update]
   
   

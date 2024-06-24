@@ -1,4 +1,4 @@
-class Public::AnimalsController < ApplicationController
+class Public::AnimalsController < PublicController
   before_action :is_matching_login_user, only: [:edit, :update]
   
   def new
@@ -32,9 +32,9 @@ class Public::AnimalsController < ApplicationController
   end
   
   def update
-    animal = Animal.find(params[:id])
-    if animal.update(animal_params)
-      redirect_to animal_path(animal)
+    @animal = Animal.find(params[:id])
+    if @animal.update(animal_params)
+      redirect_to animal_path(@animal)
     else
       @categories = Category.all
       render :edit

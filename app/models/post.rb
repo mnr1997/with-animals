@@ -11,9 +11,9 @@ class Post < ApplicationRecord
 
   def get_image(width, height)
     if image.blob.variable?
-    image.variant(resize_to_fit: [width, height]).processed
+      image.variant(resize_to_fit: [width, height]).processed
     else
-    image
+      image
     end
   end
 

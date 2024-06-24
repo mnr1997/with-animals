@@ -3,20 +3,20 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions: 'admin/sessions'
   }
-  
+
   namespace :admin do
-    get 'dashboards', to: 'dashboards#index'
+    resources :dashboards, only: [:index]
     resources :users, only: [:destroy]
   end
-  
-  
+
+
   scope module: :public do
     root to: "homes#top"
     devise_for :users
     devise_scope :user do
       post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
     end
-  
+
     resources :posts do
       collection do
         get :rank
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
 
     resources :animals, only: [:show, :edit, :update, :new, :create, :destroy]
-  
+
     resources :users, only: [:index, :show, :edit, :update] do
       resources :animals, only: [:index]
       resources :favorites, only: [:index]
@@ -37,5 +37,5 @@ Rails.application.routes.draw do
 
     resources :categories, only: [:create, :index, :show, :edit, :update]
   end
-    
+
 end

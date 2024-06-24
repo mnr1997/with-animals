@@ -1,4 +1,4 @@
-class Public::FavoritesController < ApplicationController
+class Public::FavoritesController < PublicController
   def create
     favorite = current_user.favorites.new(post_id: params[:post_id])
     favorite.save
