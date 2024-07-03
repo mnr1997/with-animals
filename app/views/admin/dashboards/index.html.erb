@@ -13,7 +13,7 @@
                 <%= user.email %>
               </td>
               <td>
-                <%= link_to '削除', admin_user_path(user), method: :delete, class: "btn btn-outline-danger", data: { confirm: '本当に削除しますか？' } %>
+                <%= link_to "削除", admin_user_path(user), method: :delete, class: "btn btn-outline-danger", data: { confirm: "本当に削除しますか？" } %>
               </td>
           <% end %>
         </tbody>

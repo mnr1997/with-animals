@@ -6,7 +6,7 @@
     <% end %>
     <div class="my-5">
     <% if @users.exists? %>
-      <%= render 'public/users/user', users: @users %>
+      <%= render "public/users/user", users: @users %>
     <% else %>
       <p>ユーザーはいません</p>
     <% end %>

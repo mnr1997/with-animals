@@ -3,7 +3,7 @@
   <div class="h1"><%= @animal.name %>のプロフィール</div>
   
   <div>
-  <%= image_tag @animal.get_animal_image(200,200), size: "200x200", class: 'object-fit-contain my-3' %>
+  <%= image_tag @animal.get_animal_image(200,200), size: "200x200", class: "object-fit-contain my-3" %>
   <p>名前：<%= @animal.name %></p>
   <p>
     性別：<%= @animal.sex_i18n %>
@@ -25,6 +25,6 @@
     <% end %>
   </div>
   
-  <%= render 'public/posts/list', posts: @posts %>
+  <%= render "public/posts/list", posts: @posts %>
 　
 </div>

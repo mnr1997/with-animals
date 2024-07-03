@@ -6,13 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Admin.find_or_create_by!(email: ENV["ADMIN_EMAIL"]) do |admin|
+  admin.password = ENV["ADMIN_PASSWORD"]
+end
+
 james = User.find_or_create_by!(email: "james@example.com") do |user|
   user.name = "James"
   user.password = "password"
 end
 
 james.posts.find_or_create_by!(caption: "テスト投稿") do |post|
-  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/cat.jpeg"), filename:"sample-post3.jpg")
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/cat.jpg"), filename:"sample-post3.jpg")
 end
 
 james.animals.find_or_create_by!(name: "ポチ") do |animal|
