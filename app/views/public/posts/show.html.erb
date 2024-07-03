@@ -7,7 +7,7 @@
           <div class="d-flex">
             <div>
             <%= link_to user_path(@post.user.id) do %>
-              <%= image_tag @post.user.get_profile_image(100,100), size: "100x100", class: 'object-fit-cover rounded-circle' %>
+              <%= image_tag @post.user.get_profile_image(100,100), size: "100x100", class: "object-fit-cover rounded-circle" %>
               <p class="text-center"><%= @post.user.name %></p>
             <% end %>
             </div>
@@ -42,7 +42,7 @@
               <div class="d-flex">
                 <div class="p-2">
                 <%= link_to user_path(comment.user.id) do %>
-                    <%= image_tag comment.user.get_profile_image(50,50), size: "50x50", class: 'object-fit-cover rounded-circle' %>
+                    <%= image_tag comment.user.get_profile_image(50,50), size: "50x50", class: "object-fit-cover rounded-circle" %>
                     <%= comment.user.name %>
                 <% end %>
                 </div>
