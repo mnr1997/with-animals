@@ -13,8 +13,8 @@ class Animal < ApplicationRecord
 
   def get_animal_image(width, height)
     unless animal_image.attached?
-      file_path = Rails.root.join("app/assets/images/paw.jpg")
-      animal_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "imege/jpg")
+      file_path = Rails.root.join("app/assets/images/paw.png")
+      animal_image.attach(io: File.open(file_path), filename: "default-image.png", content_type: "imege/png")
     end
     animal_image.variant(resize_to_limit: [width, height]).processed
   end
