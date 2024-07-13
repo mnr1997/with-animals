@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="h1">いいねランキング</div>
+    <div class="row">
+    <% @rank.each do |post| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card mt-4 shadow-lg">
+          <%= link_to post_path(post) do %>
+            <%= image_tag post.get_image(400,200), size: "400x200", class: "card-img-top object-fit-cover" %>
+          <% end %>
+          <p><%= post.caption %></p>
+          <p><%= link_to post.user.name, user_path(post.user) %></p>
+          <% if post.favorited_by?(current_user) %>
+            <p>
+              <%= link_to post_favorite_path(post), method: :delete do %>
+              <i class="fa-solid fa-heart" style="color: red;"></i> <%= post.favorites.count %> いいね
+              <% end %>
+            </p>
+          <% else %>
+            <p>
+              <%= link_to post_favorite_path(post), method: :post do %>
+              <i class="fa-regular fa-heart" style="color: red;"></i> <%= post.favorites.count %> いいね
+              <% end %>
+            </p>
+          <% end %>
+
+          <p><%= link_to "#{post.comments.count} コメント", post_path(post) %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @post %>
+</div>

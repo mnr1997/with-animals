@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     resources :posts do
       collection do
-        get :rank
+        get "ranks" => "ranks#rank"
       end
       resources :comments, only: [:create, :destroy]
       resource :favorite, only: [:create, :destroy]
