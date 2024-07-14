@@ -17,13 +17,13 @@
         <div class="container">
           <% if user_signed_in? %>
             <div>
-              <%= link_to posts_path do %>
-                <p class="h1 text-info text-decoration-none">with Animals <i class="fa-solid fa-paw" style="color: #ffaddd;"></i></p>
+              <%= link_to posts_path, class: "text-decoration-none" do %>
+                <p class="h1 text-info">with Animals <i class="fa-solid fa-paw" style="color: #ffaddd;"></i></p>
               <% end %>
             </div>
           <% else %>
             <div>
-              <%= link_to root_path do %>
+              <%= link_to root_path, class: "text-decoration-none" do %>
                 <p class="h1 text-info">with Animals <i class="fa-solid fa-paw" style="color: #ffaddd;"></i></p>
               <% end %>
             </div>
@@ -36,26 +36,26 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
               <li class="nav-item my-auto p-2">
-                <%= link_to "新規投稿", new_post_path %>
+                <%= link_to "新規投稿", new_post_path, class: "text-decoration-none text-dark" %>
               </li>
               <li class="nav-item my-auto p-2">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-decoration-none text-dark" %>
                 
               </li>
               <li class="nav-item my-auto p-2">
                 <%= link_to user_path(current_user) do %>
                   <div class="d-inline-block">
                     <%= image_tag current_user.get_profile_image(100,100), size: "100x100", class: 'object-fit-cover mt-3 rounded-circle' %>
-                    <p class="text-center"><%= current_user.name %></p>
+                    <p class="text-center text-dark"><%= current_user.name %></p>
                   </div>
                 <% end %>
               </li>
               <% else %>
               <li class="nav-item p-2">
-               <%= link_to "新規登録", new_user_registration_path %>
+               <%= link_to "新規登録", new_user_registration_path, class: "text-decoration-none text-dark" %>
               </li>
               <li class="nav-item p-2">
-                <%= link_to "ログイン", new_user_session_path %>
+                <%= link_to "ログイン", new_user_session_path, class: "text-decoration-none text-dark" %>
               </li>
               <% end %>
             </ul>
