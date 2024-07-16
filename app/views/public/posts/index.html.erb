@@ -8,14 +8,20 @@
       <%= f.submit "検索" %>
     <% end %>
     </div>
-    <div class="my-auto mr-5">
-    <%= link_to "カテゴリー検索", categories_path %>
+    <div class="m-auto">
+      <%= link_to categories_path do %>
+      <i class="fa-solid fa-magnifying-glass" style="color: black;"></i><span class="text-dark">カテゴリー検索</span>
+      <% end %>
     </div>
-    <div class="my-auto mr-5">
-    <%= link_to "ユーザー検索", users_path %>
+    <div class="m-auto">
+      <%= link_to users_path do %>
+      <i class="fa-solid fa-magnifying-glass" style="color: black;"></i><span class="text-dark">ユーザー検索</span>
+      <% end %>
     </div>
-    <div class="my-auto">
-      <%= link_to "いいねランキング", ranks_posts_path %>
+    <div class="m-auto">
+      <%= link_to ranks_posts_path do %>
+      <i class="fa-solid fa-crown" style="color: #FFD43B;"></i><span class="text-dark">いいねランキング</span>
+      <% end %>
     </div>
   </div>
   <%= render "list", posts: @posts %>

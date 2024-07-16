@@ -5,10 +5,6 @@
     <i class="fa-solid fa-arrow-left-long">戻る</i>
   <% end %>
   
-  <% if @posts.present? %>
-    <%= render "public/posts/list", posts: @posts %>
-  <% else %>
-    <%= flash.now[:notice] %>
-  <% end %>
+  <%= render "public/posts/list", posts: @posts %>
 
 </div>

@@ -80,7 +80,7 @@ jun.animals.find_or_create_by!(name: "リボン") do |animal|
   animal.age = "1歳"
   animal.character = "好奇心旺盛"
   animal.category_id = 4
-  animal.animal_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/rabbit.jpg"), filename:"rabbit.jpg")
+  animal.animal_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/hamster.jpg"), filename:"hamster.jpg")
 end
 
 megumi.animals.find_or_create_by!(name: "ファング") do |animal|

@@ -18,7 +18,7 @@ class Public::AnimalsController < PublicController
 
   def index
     @user = User.find(params[:user_id])
-    @animals = @user.animals
+    @animals = @user.animals.page(params[:page])
   end
 
   def show

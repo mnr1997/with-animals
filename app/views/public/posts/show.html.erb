@@ -36,7 +36,7 @@
             </p>
           <% end %>
     
-          <p>コメント件数：<%= @post.comments.count %></p>
+          <p><i class="fa-regular fa-comment" style="color: #74C0FC;"></i> コメント件数：<%= @post.comments.count %></p>
             <% @post.comments.each do |comment| %>
               <div class="d-flex">
                 <div class="p-2">

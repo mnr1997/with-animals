@@ -5,42 +5,50 @@
   <div>
     <% if current_user != @user %>
       <% if current_user.following?(@user) %>
-        <%= link_to "フォロー外す", user_relationship_path(@user), method: :delete, class: "btn btn-outline-info" %>
+        <%= link_to "フォロー外す", user_relationship_path(@user), method: :delete, class: "btn btn-outline-primary" %>
       <% else %>
-        <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-info" %>
+        <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-primary" %>
       <% end %>
   　<% end %>
 　</div>
 　<div>
 　  <table>
-　    <tr>
-      　<td>フォロー数:</td>
-      　<td><%= link_to user_following_path(@user) do %>
-      　    <%= @user.following_users.count %>
-      　  <% end %>
-      　  </td>
-    　 </tr>
-    　 <tr>
-      　 <td>フォロワー数:</td>
-      　 <td><%= link_to user_followed_path(@user) do %>
-      　    <%= @user.followed_users.count %>
-      　  <% end %>
-         </td>
-      </tr>
-    </table>
-  </div>
+　    <tbody>
+　      <tr>
+　        <td>フォロー数:</td>
+　        <td>
+　          <%= link_to user_following_path(@user) do %>
+　          <span class="text-dark"><%= @user.following_users.count %></span>
+　          <% end %>
+　        </td>
+　      </tr>
+　      <tr>
+　        <td>フォロワー数:</td>
+　        <td>
+　          <%= link_to user_followed_path(@user) do %>
+　          <span class="text-dark"><%= @user.followed_users.count %></span>
+　          <% end %>
+　        </td>
+　      </tr>
+　    </tbody>
+　  </table>
+　</div>
   
 
   <% if @user == current_user %>
-　  <div><%= link_to "プロフィール編集", edit_user_path, class: "btn btn-outline-secondary" %></div>
-　  <div><%= link_to "お気に入り", user_favorites_path(@user) %></div>
+    <div class="my-3"><%= link_to "プロフィール編集", edit_user_path, class: "btn btn-outline-secondary" %></div>
+    <div class="my-3">
+      <%= link_to user_favorites_path(@user) do %>
+      <i class="fa-solid fa-heart" style="color: red;"></i> <span class="text-dark">お気に入り</span>
+      <% end %>
+    </div>
   <% end %>
   
   <div class="my-3">
     <%= link_to user_animals_path(@user) do %>
-      <p><%= @user.name %>の動物</p>
+    <i class="fa-solid fa-paw" style="color: #fbacf5;"></i> <span class="text-dark"><%= @user.name %>の動物</span>
     <% end %>
   </div>
-  
+  <%= render "public/posts/list", posts: @posts %>
 </div>
 
