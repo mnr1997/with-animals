@@ -36,3 +36,5 @@
 
 ## 実装機能リストURL
 https://docs.google.com/spreadsheets/d/1LLDTjaYN0i1fNMW9-KtHjoRvcAiTGnR5beQRPEIkG34/edit?usp=sharing
+
+## テスト仕様書URL
