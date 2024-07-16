@@ -38,3 +38,4 @@
 https://docs.google.com/spreadsheets/d/1LLDTjaYN0i1fNMW9-KtHjoRvcAiTGnR5beQRPEIkG34/edit?usp=sharing
 
 ## テスト仕様書URL
+https://docs.google.com/spreadsheets/d/1mTRJWP_1JrW_FJlkG-buszDQC6pYYLbi/edit?usp=sharing&ouid=104763800652627449049&rtpof=true&sd=true
