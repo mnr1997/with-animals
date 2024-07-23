@@ -30,7 +30,7 @@
             <% else %>
             <p>
               <%= link_to post_favorite_path(@post), method: :post do %>
-              <i class="fa-regular fa-heart" style="color: red;"></i> <%= @post.favorites.count %> いいね
+              <i class="fa-regular fa-heart" style="color: red;"></i> <span class="text-dark"><%= @post.favorites.count %>いいね</span>
               <% end %>
             </p>
           <% end %>
@@ -41,7 +41,7 @@
               <div class="p-2">
               <%= link_to user_path(comment.user.id) do %>
                   <%= image_tag comment.user.get_profile_image(50,50), size: "50x50", class: "object-fit-cover rounded-circle" %>
-                  <%= comment.user.name %>
+                  <span class="text-dark"><%= comment.user.name %></span>
               <% end %>
               </div>
               <div class="my-auto p-2 flex-fill">
