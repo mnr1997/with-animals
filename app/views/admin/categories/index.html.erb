@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 col-sm-10 mt-3">
+      <div class="h3 ">カテゴリー</div>
+      <table class="table mt-3">
+        <tbody>
+          <% @categories.each do |category| %>
+          <tr>
+            <td>
+              <%= category.name %>
+            </td>
+            <td>
+              <%= link_to "編集", edit_admin_category_path(category), class: "btn btn-outline-secondary ml-5" %>
+              <%= link_to "削除", admin_category_path(category), method: :delete, class: "btn btn-outline-danger ml-5", data: { confirm: "本当に削除しますか？" } %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

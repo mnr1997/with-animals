@@ -19,19 +19,6 @@ class Public::CategoriesController < PublicController
     @category = Category.find(params[:id])
     @posts = @category.category_posts.page(params[:page])
   end
-
-  def edit
-    @category = Category.find(params[:id])
-  end
-  
-  def update
-    @category = Category.find(params[:id])
-    if @category.update(category_params)
-      redirect_to categories_path
-    else
-      render :edit
-    end
-  end
   
   private
   

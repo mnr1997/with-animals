@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :dashboards, only: [:index]
     resources :users, only: [:destroy]
+    resources :categories, only: [:index, :edit, :update, :destroy]
   end
 
   scope module: :public do
@@ -34,7 +35,7 @@ Rails.application.routes.draw do
       get "followed_users" => "relationships#followed", as: "followed"
     end
 
-    resources :categories, only: [:create, :index, :show, :edit, :update]
+    resources :categories, only: [:create, :index, :show]
   end
 
 end
