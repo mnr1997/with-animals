@@ -1,5 +1,6 @@
 <div class="container">
-  <div class="h3 ">カテゴリー</div>
+  <div class="h3 mr-5">カテゴリー</div>
+  
   <% if @category.errors.any? %>
     <ul class="alert alert-danger" role="alert">
       <div class="h6 alert-heading">
@@ -23,5 +24,7 @@
         <% end %>
       </div>
     <% end %>
+    
+    <%= paginate @categories %>
     
   </div>

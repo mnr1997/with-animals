@@ -1,7 +1,17 @@
 <div class="container">
+  <div class="d-md-flex">
+    <div class="h3 mr-5">カテゴリー</div>
+    <%= form_with url: admin_categories_path, method: :get do |f| %>
+      <%= f.text_field :name, value: params[:name] %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+  <%= link_to admin_path do %>
+    <i class="fa-solid fa-arrow-left-long">戻る</i>
+  <% end %>
+      
   <div class="row">
     <div class="col-md-5 col-sm-10 mt-3">
-      <div class="h3 ">カテゴリー</div>
       <table class="table mt-3">
         <tbody>
           <% @categories.each do |category| %>
@@ -17,6 +27,7 @@
           <% end %>
         </tbody>
       </table>
+      <%= paginate @categories %>
     </div>
   </div>
 </div>
