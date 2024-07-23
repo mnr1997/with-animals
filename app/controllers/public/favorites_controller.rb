@@ -1,4 +1,5 @@
 class Public::FavoritesController < PublicController
+  
   def create
     favorite = current_user.favorites.new(post_id: params[:post_id])
     favorite.save
@@ -14,4 +15,5 @@ class Public::FavoritesController < PublicController
   def index
     @posts = current_user.favorite_posts.page(params[:page])
   end
+  
 end

@@ -1,7 +1,6 @@
 class Public::UsersController < PublicController
   before_action :is_matching_login_user, only: [:edit, :update]
   
-  
   def index
     if params[:name].present?
       @users = User.where("name LIKE ?", "%#{params[:name]}%").page(params[:page])
@@ -45,5 +44,4 @@ class Public::UsersController < PublicController
     end
   end
   
-   
 end

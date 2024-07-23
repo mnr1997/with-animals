@@ -4,29 +4,29 @@
       <div class="h5 text-dark bg-light p-4 mb-0">編集</div>
       <div class="form-body p-4">
       <% if @post.errors.any? %>
-      <ul class="alert alert-danger" role="alert">
-        <div class="h6 alert-heading">
-        <%= @post.errors.count %>件のエラーが発生しました
-        </div>
-          <% @post.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+        <ul class="alert alert-danger" role="alert">
+          <div class="h6 alert-heading">
+          <%= @post.errors.count %>件のエラーが発生しました
+          </div>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
       <% end %>
 
       <%= form_with model: @post do |f| %>
-      <div class="form-group">
-        <%= f.label :caption %>
-        <%= f.text_area :caption, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.collection_check_boxes :animal_ids, @animals, :id, :name do |b| %>
-          <%= b.label do %>
-            <%= b.check_box %>
-            <%= b.text %>
+        <div class="form-group">
+          <%= f.label :caption %>
+          <%= f.text_area :caption, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.collection_check_boxes :animal_ids, @animals, :id, :name do |b| %>
+            <%= b.label do %>
+              <%= b.check_box %>
+              <%= b.text %>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
         <%= f.submit "保存", class: "btn btn-block btn-outline-secondary mb-3" %>
         <%= link_to post_path(@post) do %>
           <i class="fa-solid fa-arrow-left-long">戻る</i>

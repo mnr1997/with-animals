@@ -14,7 +14,6 @@
             <div class="p-2 flex-fill">
               <p><%= @post.caption %></p>
               <p><%= @post.created_at.strftime('%Y/%m/%d') %></p>
-                
               <% if @post.user == current_user %>
                 <%= link_to "編集", edit_post_path, class: "btn p-1 btn-secondary" %>
                 <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn p-1 btn-danger" %>
@@ -35,6 +34,7 @@
               <% end %>
             </p>
           <% end %>
+          
           <p><i class="fa-regular fa-comment" style="color: #74C0FC;"></i> コメント件数：<%= @post.comments.count %></p>
           <% @post.comments.each do |comment| %>
             <div class="d-flex">

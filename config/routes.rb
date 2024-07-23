@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     resources :users, only: [:destroy]
   end
 
-
   scope module: :public do
     root to: "homes#top"
     devise_for :users

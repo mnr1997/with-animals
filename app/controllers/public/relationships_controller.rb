@@ -1,4 +1,5 @@
 class Public::RelationshipsController < PublicController
+  
   def create
     user = User.find(params[:user_id])
     current_user.follow(user)
@@ -20,4 +21,5 @@ class Public::RelationshipsController < PublicController
     @user = User.find(params[:user_id])
     @users = @user.followed_users.page(params[:page])
   end
+  
 end
