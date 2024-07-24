@@ -5,7 +5,7 @@ class Public::CategoriesController < PublicController
     if @category.save
       redirect_to categories_path
     else
-      @categories = Category.all
+      @categories = Category.page(params[:page])
       render :index
     end
   end
