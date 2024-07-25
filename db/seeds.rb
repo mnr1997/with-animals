@@ -33,104 +33,93 @@ megumi = User.find_or_create_by!(email: "megumi@example.com") do |user|
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/dog4.png"), filename:"dog4.png")
 end
 
-Category.find_or_create_by!(name: "犬") do |category|
-end
+dog = Category.find_or_create_by!(name: "犬")
 
-Category.find_or_create_by!(name: "猫") do |category|
-end
+cat = Category.find_or_create_by!(name: "猫")
 
-Category.find_or_create_by!(name: "うさぎ") do |category|
-end
+rabbit = Category.find_or_create_by!(name: "うさぎ")
 
-Category.find_or_create_by!(name: "ハムスター") do |category|
-end
+hamster = Category.find_or_create_by!(name: "ハムスター")
 
-james.animals.find_or_create_by!(name: "ポチ") do |animal|
-  animal.sex = 0
+pochi = james.animals.find_or_create_by!(name: "ポチ") do |animal|
+  animal.sex = :male
   animal.age = "12歳"
   animal.character = "活発"
-  animal.category_id = 1
+  animal.category = dog
   animal.animal_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/dog2.jpg"), filename:"dog2.jpg")
 end
 
-james.animals.find_or_create_by!(name: "タマ") do |animal|
-  animal.sex = 1
+tama = james.animals.find_or_create_by!(name: "タマ") do |animal|
+  animal.sex = :female
   animal.age = "2歳"
   animal.character = "さみしがりや"
-  animal.category_id = 2
+  animal.category = cat
 end
 
-emma.animals.find_or_create_by!(name: "クロ") do |animal|
-  animal.sex = 0
+kuro = emma.animals.find_or_create_by!(name: "クロ") do |animal|
+  animal.sex = :male
   animal.age = "5歳"
   animal.character = "甘えん坊"
-  animal.category_id = 2
+  animal.category = cat
 end
 
-jun.animals.find_or_create_by!(name: "ゆき") do |animal|
-  animal.sex = 1
+yuki = jun.animals.find_or_create_by!(name: "ゆき") do |animal|
+  animal.sex = :female
   animal.age = "0歳6ヶ月"
   animal.character = "おとなしい"
-  animal.category_id = 3
+  animal.category = rabbit
   animal.animal_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/rabbit.jpg"), filename:"rabbit.jpg")
 end
 
-jun.animals.find_or_create_by!(name: "リボン") do |animal|
-  animal.sex = 1
+ribon = jun.animals.find_or_create_by!(name: "リボン") do |animal|
+  animal.sex = :female
   animal.age = "1歳"
   animal.character = "好奇心旺盛"
-  animal.category_id = 4
+  animal.category = hamster
   animal.animal_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/hamster.jpg"), filename:"hamster.jpg")
 end
 
-megumi.animals.find_or_create_by!(name: "ファング") do |animal|
-  animal.sex = 0
+fang = megumi.animals.find_or_create_by!(name: "ファング") do |animal|
+  animal.sex = :male
   animal.age = "5歳"
   animal.character = "おりこうさん"
-  animal.category_id = 1
+  animal.category = dog
   animal.animal_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/dog4.png"), filename:"dog4.png")
 end
 
 james.posts.find_or_create_by!(caption: "うちのわんこ") do |post|
   post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/dog.jpg"), filename:"dog.jpg")
-  animal = Animal.find(1)
-  post.animal_posts.new(animal: animal)
+  post.animal_posts.new(animal: pochi)
 end
 
 james.posts.find_or_create_by!(caption: "うちのにゃんこ") do |post|
   post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/cat.jpg"), filename:"cat.jpg")
-  animal = Animal.find(2)
-  post.animal_posts.new(animal: animal)
+  post.animal_posts.new(animal: tama)
 end
 
 emma.posts.find_or_create_by!(caption: "黒猫") do |post|
   post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/cat2.png"), filename:"cat2.png")
-  animal = Animal.find(3)
-  post.animal_posts.new(animal: animal)
+  post.animal_posts.new(animal: kuro)
 end
 
 jun.posts.find_or_create_by!(caption: "イースター！") do |post|
   post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/rabbit2.jpg"), filename:"rabbit2.jpg")
-  animal = Animal.find(4)
-  post.animal_posts.new(animal: animal)
+  post.animal_posts.new(animal: yuki)
 end
 
 jun.posts.find_or_create_by!(caption: "食事中です") do |post|
   post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/hamster.jpg"), filename:"hamster.jpg")
-  animal = Animal.find(5)
-  post.animal_posts.new(animal: animal)
+  post.animal_posts.new(animal: ribon)
 end
 
 megumi.posts.find_or_create_by!(caption: "かわいい！") do |post|
   post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/dog3.jpg"), filename:"dog3.jpg")
-  animal = Animal.find(6)
-  post.animal_posts.new(animal: animal)
+  post.animal_posts.new(animal: fang)
 end
 
 megumi.posts.find_or_create_by!(caption: "かっこいい！") do |post|
   post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/dog5.png"), filename:"dog5.png")
-  animal = Animal.find(6)
-  post.animal_posts.new(animal: animal)
+  post.animal_posts.new(animal: fang)
 end
 
 puts "dataの作成に成功しました"
