@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  GUEST_USER_EMAIL = "guest@example.com"
+  private_constant :GUEST_USER_EMAIL
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,11 +16,18 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_user_id", dependent: :destroy
   has_many :following_users, through: :active_relationships, source: :followed_user
   has_many :followed_users, through: :passive_relationships, source: :following_user
+  
+  has_one_attached :profile_image
 
   validates :name, presence: true
   validates :name, length: { maximum: 20 }
 
-  has_one_attached :profile_image
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲスト"
+    end
+  end
 
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -27,29 +37,20 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  GUEST_USER_EMAIL = "guest@example.com"
-
-  def self.guest
-    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
-      user.password = SecureRandom.urlsafe_base64
-      user.name = "ゲスト"
-    end
-  end
-
   def guest_user?
     email == GUEST_USER_EMAIL
   end
-  
+
   def follow(user)
     active_relationships.create(followed_user_id: user.id)
   end
-  
+
   def unfollow(user)
     active_relationships.find_by(followed_user_id: user.id).destroy
   end
-  
+
   def following?(user)
     following_users.include?(user)
   end
-
+  
 end

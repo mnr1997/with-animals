@@ -1,10 +1,11 @@
 class Post < ApplicationRecord
-  has_one_attached :image
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :animal_posts, dependent: :destroy
   has_many :animals, through: :animal_posts, source: :animal
+  
+  has_one_attached :image
 
   validates :image, presence: true
   validates :caption, presence: true
@@ -21,4 +22,5 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+  
 end
