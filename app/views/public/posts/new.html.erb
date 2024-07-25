@@ -3,16 +3,8 @@
     <div class="col-sm-12 mx-auto max-w-480 shadow-lg rounded">
       <div class="h5 text-dark bg-light p-4 mb-0">新規投稿</div>
       <div class="form-body p-4">
-        <% if @post.errors.any? %>
-          <ul class="alert alert-danger" role="alert">
-            <div class="h6 alert-heading">
-              <%= @post.errors.count %>件のエラーが発生しました
-            </div>
-            <% @post.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
+        <%= render partial: "shared/error_message", locals: { errors: @post.errors } %>
+        
         <%= form_with model: @post do |f| %>
           <div class="form-group">
           　<%= f.label :image %>

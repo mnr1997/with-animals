@@ -3,61 +3,50 @@
     <div class="col-sm-12 mx-auto max-w-480 shadow-lg rounded">
       <div class="h5 text-dark bg-light p-4 mb-0">動物登録</div>
       <div class="form-body p-4">
-        <% if @animal.errors.any? %>
-          <ul class="alert alert-danger" role="alert">
-            <div class="h6 alert-heading">
-              <%= @animal.errors.count %>件のエラーが発生しました
+        <%= render partial: "shared/error_message", locals: { errors: @animal.errors } %>
+        
+        <%= form_with model: @animal do |f| %>
+          <div class="form-group">
+            <%= f.file_field :animal_image, accept: "image/*", class: "w-100" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+          </div>
+          <div class="form-group d-flex">
+            <%= f.label :sex %>
+            <div class="pl-3">
+              <%= f.radio_button :sex, Animal.sexes.key(0) %>
+              <%= f.label :sex_male, Animal.sexes_i18n[:male] %><br>
+              <%= f.radio_button :sex, Animal.sexes.key(1) %>
+              <%= f.label :sex_female, Animal.sexes_i18n[:female] %><br>
+              <%= f.radio_button :sex, Animal.sexes.key(2) %>
+              <%= f.label :sex_unknown, Animal.sexes_i18n[:unknown] %><br>
             </div>
-            <% @animal.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+          </div>
+          <div class="form-group">
+            <%= f.label :age %>
+            <%= f.text_field :age %>
+          </div>
+          <div class="form-group">
+            <%= f.label :character %>
+            <%= f.text_field :character %>
+          </div>
+          <div class="form-group">
+            <%= f.label :category_id %>
+            <%= f.collection_radio_buttons :category_id, @categories, :id, :name do |b| %>
+              <%= b.label do %>
+                <%= b.radio_button %>
+                <%= b.text %>
+              <% end %>
             <% end %>
-          </ul>
+          </div>
+          <%= f.submit '登録', class: "btn btn-block btn-success mb-3" %>
         <% end %>
-      <%= form_with model: @animal do |f| %>
-      <div class="form-group">
-        <%= f.file_field :animal_image, accept: "image/*", class: "w-100" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-      </div>
-
-      <div class="form-group d-flex">
-        <%= f.label :sex %>
-        <div class="pl-3">
-          <%= f.radio_button :sex, Animal.sexes.key(0) %>
-          <%= f.label :sex_male, Animal.sexes_i18n[:male] %><br>
-          <%= f.radio_button :sex, Animal.sexes.key(1) %>
-          <%= f.label :sex_female, Animal.sexes_i18n[:female] %><br>
-          <%= f.radio_button :sex, Animal.sexes.key(2) %>
-          <%= f.label :sex_unknown, Animal.sexes_i18n[:unknown] %><br>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :age %>
-        <%= f.text_field :age %>
-      </div>
-      <div class="form-group">
-        <%= f.label :character %>
-        <%= f.text_field :character %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :category_id %>
-        <%= f.collection_radio_buttons :category_id, @categories, :id, :name do |b| %>
-            <%= b.label do %>
-              <%= b.radio_button %>
-              <%= b.text %>
-            <% end %>
-          <% end %>
-      </div>
-
-      <%= f.submit '登録', class: "btn btn-block btn-success mb-3" %>
-
-      <% end %>
-      <%= link_to user_animals_path(current_user) do %>
-        <i class="fa-solid fa-arrow-left-long">戻る</i>
-      <% end %>
+        
+        <%= link_to user_animals_path(current_user) do %>
+          <i class="fa-solid fa-arrow-left-long">戻る</i>
+        <% end %>
       </div>
 　　</div>
   </div>

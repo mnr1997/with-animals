@@ -3,20 +3,20 @@
     <div class="col-md-5 col-sm-10 mt-3">
       <table class="table">
         <tbody>
-        <% users.each do |user| %>
-          <tr>
-            <td>
-              <%= link_to user_path(user) do %>
-                <%= image_tag user.get_profile_image(100,100), size: "100x100", class: "object-fit-cover rounded-circle" %>
-              <% end %>
-            </td>
-            <td class="align-middle">
-              <%= link_to user_path(user) do %>
-                <span class="text-dark"><%= user.name %></span>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
+          <% users.each do |user| %>
+            <tr>
+              <td>
+                <%= link_to user_path(user) do %>
+                  <%= image_tag user.get_profile_image(100,100), size: "100x100", class: "object-fit-cover rounded-circle" %>
+                <% end %>
+              </td>
+              <td class="align-middle">
+                <%= link_to user_path(user) do %>
+                  <span class="text-dark"><%= user.name %></span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     <%= paginate users %>

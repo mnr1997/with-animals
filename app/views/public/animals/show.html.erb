@@ -3,15 +3,14 @@
   <div class="h1"><%= @animal.name %>のプロフィール</div>
   
   <div>
-  <%= image_tag @animal.get_animal_image(200,200), size: "200x200", class: "object-fit-contain my-3" %>
-  <p>名前：<%= @animal.name %></p>
-  <p>
-    性別：<%= @animal.sex_i18n %>
-  </p>
-  <p>年齢：<%= @animal.age %></p>
-  <p>性格：<%= @animal.character %></p>
-  <p>カテゴリー：<%= @animal.category&.name %></p>
+    <%= image_tag @animal.get_animal_image(200,200), size: "200x200", class: "object-fit-contain my-3" %>
+    <p>名前：<%= @animal.name %></p>
+    <p>性別：<%= @animal.sex_i18n %></p>
+    <p>年齢：<%= @animal.age %></p>
+    <p>性格：<%= @animal.character %></p>
+    <p>カテゴリー：<%= @animal.category&.name %></p>
   </div>
+  
   <div class="my-3">
     <% if @animal.user == current_user %>
       <%= link_to "編集", edit_animal_path(@animal), class: "btn btn-outline-secondary" %>

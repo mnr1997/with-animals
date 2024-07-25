@@ -2,24 +2,24 @@
   <div class="d-md-flex">
     <div class="h3 mr-5">投稿一覧</div>
     <div class="mr-5">
-    <%= form_with url: posts_path, method: :get do |f| %>
-      <%= f.text_field :caption, value: params[:caption] %>
-      <%= f.submit "検索" %>
-    <% end %>
+      <%= form_with url: posts_path, method: :get do |f| %>
+        <%= f.text_field :caption, value: params[:caption] %>
+        <%= f.submit "検索" %>
+      <% end %>
     </div>
     <div class="m-auto">
       <%= link_to categories_path do %>
-      <i class="fa-solid fa-magnifying-glass" style="color: black;"></i><span class="text-dark">カテゴリー検索</span>
+        <i class="fa-solid fa-magnifying-glass" style="color: black;"></i><span class="text-dark">カテゴリー検索</span>
       <% end %>
     </div>
     <div class="m-auto">
       <%= link_to users_path do %>
-      <i class="fa-solid fa-magnifying-glass" style="color: black;"></i><span class="text-dark">ユーザー検索</span>
+        <i class="fa-solid fa-magnifying-glass" style="color: black;"></i><span class="text-dark">ユーザー検索</span>
       <% end %>
     </div>
     <div class="m-auto">
       <%= link_to ranks_posts_path do %>
-      <i class="fa-solid fa-crown" style="color: #FFD43B;"></i><span class="text-dark">いいねランキング</span>
+        <i class="fa-solid fa-crown" style="color: #FFD43B;"></i><span class="text-dark">いいねランキング</span>
       <% end %>
     </div>
   </div>

@@ -4,6 +4,7 @@
       <div class="h5 text-dark bg-light p-4 mb-0">カテゴリー編集</div>
       <div class="form-body p-4">
         <%= render partial: "shared/error_message", locals: { errors: @category.errors } %>
+        
         <%= form_with model: [:admin, @category] do |f| %>
           <div class="form-group">
             <%= f.label :name %>
