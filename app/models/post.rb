@@ -4,13 +4,17 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :animal_posts, dependent: :destroy
   has_many :animals, through: :animal_posts, source: :animal
-  
+
   has_one_attached :image
 
   validates :image, presence: true
   validates :caption, presence: true
   validates :caption, length: { maximum: 200 }
-  
+
+  scope :caption_search, -> (caption) do
+    where("caption LIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(caption)}%")
+  end
+
   def get_image(width, height)
     if image.blob.variable?
       image.variant(resize_to_fit: [width, height]).processed
@@ -22,5 +26,5 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
-  
+
 end

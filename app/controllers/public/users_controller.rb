@@ -2,11 +2,9 @@ class Public::UsersController < PublicController
   before_action :is_matching_login_user, only: [:edit, :update]
   
   def index
+    @users = User.all.page(params[:page])
     if params[:name].present?
-      @users = User.where("name LIKE ?", "%#{params[:name]}%").page(params[:page])
-      @users = User.page(params[:page]) if @users.empty?
-    else
-      @users = User.page(params[:page])
+      @users = @users.user_search(params[:name])
     end
   end
 

@@ -21,6 +21,10 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :name, length: { maximum: 20 }
+  
+  scope :user_search, -> (name) do
+    where("name LIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(name)}%")
+  end
 
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|

@@ -1,6 +1,6 @@
 class Public::PostsController < PublicController
   before_action :is_matching_login_user, only: [:edit, :update]
-  
+
   def new
     @post = Post.new
     @animals = current_user.animals
@@ -17,11 +17,9 @@ class Public::PostsController < PublicController
   end
 
   def index
+    @posts = Post.all.page(params[:page])
     if params[:caption].present?
-      @posts = Post.where("caption LIKE ?", "%#{params[:caption]}%").page(params[:page])
-      @posts = Post.page(params[:page]) if @posts.empty?
-    else
-      @posts = Post.page(params[:page])
+      @posts = @posts.caption_search(params[:caption])
     end
   end
 
