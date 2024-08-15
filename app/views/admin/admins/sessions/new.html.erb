@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5 col-sm-10 col-10 mx-md-auto mx-sm-auto mx-auto text-center shadow-lg rounded px-0"> 
+    <div class="col-md-5 col-sm-10 col-10 mx-md-auto mx-sm-auto mx-auto text-center shadow-lg rounded px-0">
       <div class="h2 pt-4">ログイン</div>
       <div class="form-body p-4">
         <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
@@ -14,7 +14,7 @@
             </div>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
           </div>
-        
+
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text form-control">
@@ -25,13 +25,13 @@
             </div>
             <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "form-control" %>
           </div>
-        
+
           <div class="actions">
             <%= f.submit "ログイン", class: "btn btn-block btn-info" %>
           </div>
         <% end %>
-        
-        <%= render "admin/shared/links" %>
+
+        <%= render "admin/admins/shared/links" %>
       </div>
     </div>
   </div>

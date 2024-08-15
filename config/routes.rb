@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  devise_for :admin, skip: [:registrations, :password], controllers: {
-    sessions: "admin/sessions"
+ devise_for :admins, skip: [:registrations, :password], controllers: {
+    sessions: "admin/admins/sessions",
   }
-
   namespace :admin do
     get "/" => "dashboards#top"
     resources :users, only: [:index, :destroy]
@@ -12,7 +11,10 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    devise_for :users
+    devise_for :users, skip: [:password], controllers: {
+      sessions: "public/users/sessions",
+      registrations: "public/users/registrations",
+    }
     devise_scope :user do
       post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
     end

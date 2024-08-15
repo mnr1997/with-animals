@@ -9,7 +9,7 @@ class Admin::UsersController < AdminController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
+    @user.destroy!
     redirect_to admin_users_path, notice: "ユーザーを削除しました。"
   end
 

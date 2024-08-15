@@ -25,9 +25,6 @@ class Public::UsersController < PublicController
       render :edit
     end
   end
-
-  def confirm
-  end
   
   private
   

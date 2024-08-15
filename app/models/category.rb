@@ -5,4 +5,8 @@ class Category < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: true
   validates :name, length: { maximum: 20 }
+  
+  scope :name_search, -> (name) do
+    where("name LIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(name)}%")
+  end
 end

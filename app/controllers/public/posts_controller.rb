@@ -45,7 +45,7 @@ class Public::PostsController < PublicController
 
   def destroy
     post = Post.find(params[:id])
-    post.destroy
+    post.destroy!
     redirect_to user_path(current_user)
   end
 

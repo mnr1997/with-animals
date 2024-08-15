@@ -43,7 +43,7 @@ class Public::AnimalsController < PublicController
   
   def destroy
     animal = Animal.find(params[:id])
-    animal.destroy
+    animal.destroy!
     redirect_to user_animals_path(current_user)
   end
   

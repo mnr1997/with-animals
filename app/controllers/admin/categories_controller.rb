@@ -1,11 +1,9 @@
 class Admin::CategoriesController < AdminController
   
   def index
+    @categories = Category.all.page(params[:page])
     if params[:name].present?
-      @categories = Category.where("name LIKE ?", "%#{params[:name]}%").page(params[:page])
-      @categories = Category.page(params[:page]) if @categories.empty?
-    else
-      @categories = Category.page(params[:page])
+      @categories = @categories.name_search
     end
   end
   
@@ -24,7 +22,7 @@ class Admin::CategoriesController < AdminController
   
   def destroy
     category = Category.find(params[:id])
-    category.destroy
+    category.destroy!
     redirect_to admin_categories_path, notice: "カテゴリーを削除しました。"
   end
   
