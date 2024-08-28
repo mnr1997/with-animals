@@ -17,7 +17,7 @@ class Public::PostsController < PublicController
   end
 
   def index
-    @posts = Post.all.page(params[:page])
+    @posts = Post.all.preload(:favorites).page(params[:page])
     if params[:caption].present?
       @posts = @posts.caption_search(params[:caption])
     end

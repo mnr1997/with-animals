@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
- devise_for :admins, skip: [:registrations, :password], controllers: {
+  devise_for :admins, skip: [:registrations, :password], controllers: {
     sessions: "admin/admins/sessions",
   }
   namespace :admin do
-    get "/" => "dashboards#top"
+    root to: "dashboards#top"
     resources :users, only: [:index, :destroy]
     resources :categories, only: [:index, :edit, :update, :destroy]
   end
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
     resources :posts do
       collection do
-        get "ranks" => "ranks#rank"
+        resources :ranks, only: [:index]
       end
       resources :comments, only: [:create, :destroy]
       resource :favorite, only: [:create, :destroy]
@@ -33,11 +33,12 @@ Rails.application.routes.draw do
       resources :animals, only: [:index]
       resources :favorites, only: [:index]
       resources :relationships, only: [:create, :destroy]
+      # resources :following_users, only: [:index]
+      # resources :followed_users, only: [:index]
       get "following_users" => "relationships#following", as: "following"
       get "followed_users" => "relationships#followed", as: "followed"
     end
 
     resources :categories, only: [:create, :index, :show]
   end
-
 end

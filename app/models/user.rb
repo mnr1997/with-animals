@@ -3,9 +3,8 @@ class User < ApplicationRecord
   private_constant :GUEST_USER_EMAIL
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  # :confirmable, :lockable, :timeoutable, :trackable, :recoverable, :rememberable and :omniauthable
+  devise :database_authenticatable, :registerable, :validatable
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -16,12 +15,12 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_user_id", dependent: :destroy
   has_many :following_users, through: :active_relationships, source: :followed_user
   has_many :followed_users, through: :passive_relationships, source: :following_user
-  
+
   has_one_attached :profile_image
 
   validates :name, presence: true
   validates :name, length: { maximum: 20 }
-  
+
   scope :user_search, -> (name) do
     where("name LIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(name)}%")
   end
@@ -56,5 +55,5 @@ class User < ApplicationRecord
   def following?(user)
     following_users.include?(user)
   end
-  
+
 end
