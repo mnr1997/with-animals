@@ -18,8 +18,8 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :name, presence: true
-  validates :name, length: { maximum: 20 }
+  validates :name, presence: true, length: { maximum: 20 }
+  validates :introduction, length: { maximum: 50 }
 
   scope :user_search, -> (name) do
     where("name LIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(name)}%")

@@ -7,22 +7,22 @@
             <%= image_tag post.get_image(400,200), size: "400x200", class: "card-img-top object-fit-cover" %>
           <% end %>
           <div class="ml-2 mt-2">
-            <p><i class="fa-solid fa-camera"></i> <%= post.caption %></p>
-            <p>
+            <p class="text-truncate"><i class="fa-solid fa-camera"></i> <%= post.caption %></p>
+            <p class="text-truncate">
               <%= link_to user_path(post.user) do %>
-              <i class="fa-solid fa-user" style="color: #0444b4;"></i> <span class="text-dark"><%= post.user.name %></span>
+                <i class="fa-solid fa-user" style="color: #0444b4;"></i> <span class="text-dark"><%= post.user.name %></span>
               <% end %>
             </p>
             <% if post.favorited_by?(current_user) %>
               <p class="text-dark">
                 <%= link_to post_favorite_path(post), method: :delete do %>
-                <i class="fa-solid fa-heart" style="color: red;"></i> <span class="text-dark"><%= post.favorites.count %> いいね</span>
+                  <i class="fa-solid fa-heart" style="color: red;"></i> <span class="text-dark"><%= post.favorites.count %> いいね</span>
                 <% end %>
               </p>
             <% else %>
               <p>
                 <%= link_to post_favorite_path(post), method: :post do %>
-                <i class="fa-regular fa-heart" style="color: red;"></i> <span class="text-dark"><%= post.favorites.count %> いいね</span>
+                  <i class="fa-regular fa-heart" style="color: red;"></i> <span class="text-dark"><%= post.favorites.count %> いいね</span>
                 <% end %>
               </p>
             <% end %>

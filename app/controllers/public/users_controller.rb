@@ -2,7 +2,7 @@ class Public::UsersController < PublicController
   before_action :is_matching_login_user, only: [:edit, :update]
   
   def index
-    @users = User.all.page(params[:page])
+    @users = User.all.order(created_at: :desc).page(params[:page])
     if params[:name].present?
       @users = @users.user_search(params[:name])
     end

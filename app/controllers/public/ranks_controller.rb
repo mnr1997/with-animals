@@ -1,5 +1,5 @@
 class Public::RanksController < ApplicationController
-  def rank
+  def index
     @posts = Post.joins(:favorites).group('posts.id').order('COUNT(favorites.id) DESC').page(params[:page])
   end
 end

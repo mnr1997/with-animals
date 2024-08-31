@@ -8,8 +8,7 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   validates :image, presence: true
-  validates :caption, presence: true
-  validates :caption, length: { maximum: 200 }
+  validates :caption, presence: true, length: { maximum: 200 }
 
   scope :caption_search, -> (caption) do
     where("caption LIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(caption)}%")

@@ -3,7 +3,7 @@ class Admin::CategoriesController < AdminController
   def index
     @categories = Category.all.page(params[:page])
     if params[:name].present?
-      @categories = @categories.name_search
+      @categories = @categories.name_search(params[:name])
     end
   end
   
