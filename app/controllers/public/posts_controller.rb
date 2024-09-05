@@ -17,7 +17,10 @@ class Public::PostsController < PublicController
   end
 
   def index
-    @posts = Post.all.order(created_at: :desc).preload(:favorites).page(params[:page])
+    @posts = Post.all
+                 .order(created_at: :desc)
+                 .preload(:favorites, :user)
+                 .page(params[:page])
     if params[:caption].present?
       @posts = @posts.caption_search(params[:caption])
     end

@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(version: 2024_06_06_125916) do
 
   create_table "posts", force: :cascade do |t|
     t.text "caption", null: false
+    t.integer "favorites_count", default: 0, null: false
+    t.integer "comments_count", default: 0, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

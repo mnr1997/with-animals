@@ -16,19 +16,19 @@
             <% if post.favorited_by?(current_user) %>
               <p class="text-dark">
                 <%= link_to post_favorite_path(post), method: :delete do %>
-                  <i class="fa-solid fa-heart" style="color: red;"></i> <span class="text-dark"><%= post.favorites.count %> いいね</span>
+                  <i class="fa-solid fa-heart" style="color: red;"></i> <span class="text-dark"><%= post.favorites_count %> いいね</span>
                 <% end %>
               </p>
             <% else %>
               <p>
                 <%= link_to post_favorite_path(post), method: :post do %>
-                  <i class="fa-regular fa-heart" style="color: red;"></i> <span class="text-dark"><%= post.favorites.count %> いいね</span>
+                  <i class="fa-regular fa-heart" style="color: red;"></i> <span class="text-dark"><%= post.favorites_count %> いいね</span>
                 <% end %>
               </p>
             <% end %>
             <p>
               <%= link_to post_path(post) do %>
-                <i class="fa-regular fa-comment" style="color: #74C0FC;"></i> <span class="text-dark"><%= post.comments.count %> コメント</span>
+                <i class="fa-regular fa-comment" style="color: #74C0FC;"></i> <span class="text-dark"><%= post.comments_count %> コメント</span>
               <% end %>
             </p>
           </div>
