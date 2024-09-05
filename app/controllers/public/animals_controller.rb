@@ -23,7 +23,9 @@ class Public::AnimalsController < PublicController
 
   def show
     @animal = Animal.find(params[:id])
-    @posts = @animal.posts.page(params[:page])
+    @posts = @animal.posts
+                    .preload(:favorites, :user)
+                    .page(params[:page])
   end
 
   def edit

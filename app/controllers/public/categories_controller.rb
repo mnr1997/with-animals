@@ -17,7 +17,9 @@ class Public::CategoriesController < PublicController
   
   def show
     @category = Category.find(params[:id])
-    @posts = @category.category_posts.page(params[:page])
+    @posts = @category.category_posts
+                      .preload(:favorites, :user)
+                      .page(params[:page])
   end
   
   private
