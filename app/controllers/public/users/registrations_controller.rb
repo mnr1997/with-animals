@@ -15,14 +15,19 @@ class Public::Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @user = current_user
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -40,16 +45,17 @@ class Public::Users::RegistrationsController < Devise::RegistrationsController
 
   private
 
-  # If you have extra params to permit, append them to the sanitizer.
-  
-  private
-
+  # If you have extra params to permit, append them to the sanitizer
   def after_sign_up_path_for(resource)
     posts_path
   end
-  
+
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
   # If you have extra params to permit, append them to the sanitizer.

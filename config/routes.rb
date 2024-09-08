@@ -29,10 +29,10 @@ Rails.application.routes.draw do
 
     resources :animals, only: [:show, :edit, :update, :new, :create, :destroy]
 
-    resources :users, only: [:index, :show, :edit, :update] do
+    resources :users, only: [:index, :show] do
       resources :animals, only: [:index]
       resources :favorites, only: [:index]
-      resources :relationships, only: [:create, :destroy]
+      resource :relationships, only: [:create, :destroy]
       # resources :following_users, only: [:index]
       # resources :followed_users, only: [:index]
       get "following_users" => "relationships#following", as: "following"

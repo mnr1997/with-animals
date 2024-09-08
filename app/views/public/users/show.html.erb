@@ -5,13 +5,13 @@
   <div>
     <% if current_user != @user %>
       <% if current_user.following?(@user) %>
-        <%= link_to "フォロー外す", user_relationship_path(@user), method: :delete, class: "btn btn-outline-primary" %>
+        <%= link_to "フォロー外す", user_relationships_path(@user), method: :delete, class: "btn btn-outline-primary" %>
       <% else %>
         <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-primary" %>
       <% end %>
   　<% end %>
 　</div>
-　
+
 　<div>
 　  <table>
 　    <tbody>
@@ -34,22 +34,22 @@
 　    </tbody>
 　  </table>
 　</div>
-  
+
   <% if @user == current_user %>
-    <div class="my-3"><%= link_to "プロフィール編集", edit_user_path, class: "btn btn-outline-secondary" %></div>
+    <div class="my-3"><%= link_to "プロフィール編集", edit_user_registration_path, class: "btn btn-outline-secondary" %></div>
     <div class="my-3">
       <%= link_to user_favorites_path(@user) do %>
       <i class="fa-solid fa-heart" style="color: red;"></i> <span class="text-dark">お気に入り</span>
       <% end %>
     </div>
   <% end %>
-  
+
   <div class="my-3">
     <%= link_to user_animals_path(@user) do %>
       <i class="fa-solid fa-paw" style="color: #fbacf5;"></i> <span class="text-dark"><%= @user.name %>の動物</span>
     <% end %>
   </div>
-  
+
   <%= render "public/posts/list", posts: @posts %>
 </div>
 
