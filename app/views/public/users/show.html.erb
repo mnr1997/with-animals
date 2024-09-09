@@ -1,5 +1,8 @@
 <div class="container">
-  <div class="h3"><%= @user.name %></div>
+  <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left-long">戻る</i></a>
+  
+  <div class="h3 mt-3"><%= @user.name %></div>
+  
   <%= image_tag @user.get_profile_image(200,200), size: "200x200", class: "object-fit-contain mt-3" %>
   <p class="mt-3">introduction:<%= @user.introduction %></p>
   <div>

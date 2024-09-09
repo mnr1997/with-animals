@@ -1,6 +1,12 @@
 <div class="container">
   <div class="h3 mr-5">カテゴリー</div>
   
+  <div class="mb-3">
+    <%= link_to posts_path do %>
+      <i class="fa-solid fa-arrow-left-long">戻る</i>
+    <% end %>
+  </div>
+  
   <%= render partial: "shared/error_message", locals: { errors: @category.errors } %>
 
   <%= form_with model: @category do |f| %>
@@ -11,7 +17,7 @@
   <% @categories.each do |category| %>
     <div class="my-3">
       <%= link_to category_path(category) do %>
-      <span class="text-dark"><%= category.name %></span>
+        <span class="text-dark"><%= category.name %></span>
       <% end %>
     </div>
   <% end %>

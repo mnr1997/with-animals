@@ -6,5 +6,10 @@
       <%= f.submit "検索" %>
     <% end %>
   </div>
+  <div class="mb-3">
+    <%= link_to posts_path do %>
+      <i class="fa-solid fa-arrow-left-long">戻る</i>
+    <% end %>
+  </div>
   <%= render "user", users: @users %>
 </div>

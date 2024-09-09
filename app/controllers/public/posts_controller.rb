@@ -27,7 +27,7 @@ class Public::PostsController < PublicController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.preload(:favorites, :comments).find(params[:id])
     @comment = Comment.new
   end
 
