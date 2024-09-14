@@ -19,7 +19,7 @@
 ・動物可愛い姿で癒されたい時  
 ​
 ## 設計書
-後ほど作成予定
+https://docs.google.com/spreadsheets/d/14Zzdth5kOfC4HqQwjP3VhlNlDYititilwtJ-wOWwV6Q/edit?usp=sharing
 ​
 ## 開発環境
 - OS：Linux(CentOS)
