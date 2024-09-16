@@ -19,9 +19,7 @@
   </div>
   
   <div>
-    <%= link_to user_animals_path(@animal.user) do %>
-      <i class="fa-solid fa-arrow-left-long">戻る</i>
-    <% end %>
+    <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left-long">戻る</i></a>
   </div>
   
   <%= render "public/posts/list", posts: @posts %>

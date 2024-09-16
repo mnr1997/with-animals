@@ -1,8 +1,6 @@
 <div class="container">
   <div class="h3"><%= @category.name %>の投稿一覧</div>
-  <%= link_to categories_path do %>
-    <i class="fa-solid fa-arrow-left-long">戻る</i>
-  <% end %>
+  <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left-long">戻る</i></a>
   
   <%= render "public/posts/list", posts: @posts %>
 

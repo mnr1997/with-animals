@@ -1,9 +1,7 @@
 <div class="container">
   <div class="h3"><%= @user.name %>をフォローしているユーザー一覧</div>
   
-  <%= link_to user_path(@user) do %>
-    <i class="fa-solid fa-arrow-left-long">戻る</i>
-  <% end %>
+  <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left-long">戻る</i></a>
   
   <div class="my-5">
     <% if @users.exists? %>

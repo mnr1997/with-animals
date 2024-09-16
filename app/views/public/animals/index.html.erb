@@ -1,9 +1,7 @@
 <div class="container">
   <div class="h3"><%= @user.name %>の動物</div>
   <div class="mt-3">
-    <%= link_to user_path(@user) do %>
-      <i class="fa-solid fa-arrow-left-long">戻る</i>
-    <% end %>
+    <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left-long">戻る</i></a>
     
     <% if @user == current_user %>
       <%= link_to "登録", new_animal_path, class: "btn btn-success ml-3" %>  
