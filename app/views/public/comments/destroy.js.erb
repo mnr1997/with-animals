@@ -1,0 +1,9 @@
+var comments = document.querySelector(".js-comments");
+if (comments) {
+  comments.innerHTML = "<%= j(render partial: "public/comments/comment", locals: { post: @post }) %>";
+}
+
+var commentsCount = document.querySelector(".js-comments-count");
+if (commentsCount) {
+  commentsCount.innerHTML = "<%= @post.comments_count %>";
+}
