@@ -13,7 +13,7 @@
                 <i class="fa-solid fa-user" style="color: #0444b4;"></i> <span class="text-dark"><%= post.user.name %></span>
               <% end %>
             </p>
-            <div class="js-fav-btn">
+            <div class="js-fav-btn-<%= post.id %>">
               <%= render partial: "public/favorites/button", locals: { post: post } %>
             </div>
             <p>

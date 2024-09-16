@@ -1,4 +1,4 @@
-var btn = document.querySelector(".js-fav-btn");
+var btn = document.querySelector(".js-fav-btn-<%= @post.id %>");
 if (btn) {
   btn.innerHTML = "<%= j(render partial: "public/favorites/button", locals: { post: @post }) %>";
 }

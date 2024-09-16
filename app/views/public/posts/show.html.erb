@@ -24,7 +24,7 @@
                 <% end %>
               </div>
             </div>
-            <div class="js-fav-btn">
+            <div class="js-fav-btn-<%= @post.id %>">
               <%= render partial: "public/favorites/button", locals: { post: @post } %>
             </div>
             <p><i class="fa-regular fa-comment" style="color: #74C0FC;"></i> コメント件数：<span class="js-comments-count"><%= @post.comments_count %></span></p>
