@@ -1,7 +1,7 @@
 <div class="container">
-  
+
   <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left-long">戻る</i></a>
-  
+
   <div class="card-list-container py-5">
     <div class="row">
       <div class="col-12 col-sm-8 col-md-6 mx-auto">
@@ -24,42 +24,15 @@
                 <% end %>
               </div>
             </div>
-        
-            <% if @post.favorited_by?(current_user) %>
-              <p>
-                <%= link_to post_favorite_path(@post), method: :delete do %>
-                  <i class="fa-solid fa-heart" style="color: red;"></i> <span class="text-dark"><%= @post.favorites.count %> いいね</span>
-                <% end %>
-              </p>
-              <% else %>
-              <p>
-                <%= link_to post_favorite_path(@post), method: :post do %>
-                  <i class="fa-regular fa-heart" style="color: red;"></i> <span class="text-dark"><%= @post.favorites_count %>いいね</span>
-                <% end %>
-              </p>
-            <% end %>
-            
-            <p><i class="fa-regular fa-comment" style="color: #74C0FC;"></i> コメント件数：<%= @post.comments_count %></p>
-            <% @post.comments.each do |comment| %>
-              <div class="d-flex">
-                <div class="p-2">
-                  <%= link_to user_path(comment.user.id) do %>
-                      <%= image_tag comment.user.get_profile_image(50,50), size: "50x50", class: "object-fit-cover rounded-circle" %>
-                      <span class="text-dark"><%= comment.user.name %></span>
-                  <% end %>
-                </div>
-                <div class="my-auto p-2 flex-fill">
-                  <%= comment.comment %>
-                  <%= comment.created_at.strftime("%Y/%m/%d") %>
-                  <% if comment.user == current_user %>
-                    <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-            
+            <div class="js-fav-btn">
+              <%= render partial: "public/favorites/button", locals: { post: @post } %>
+            </div>
+            <p><i class="fa-regular fa-comment" style="color: #74C0FC;"></i> コメント件数：<span class="js-comments-count"><%= @post.comments_count %></span></p>
+            <div class="js-comments">
+              <%= render partial: "public/comments/comment", locals: { post: @post } %>
+            </div>
             <div class="flex-fill">
-              <%= form_with model: [@post, @comment] do |f| %>
+              <%= form_with model: [@post, @comment], local: false do |f| %>
                 <%= f.text_area :comment, rows: "2", placeholder: "コメント（50文字以内）" %>
                 <%= f.submit "送信する" %>
               <% end %>
