@@ -15,7 +15,7 @@ RSpec.describe 'Animalモデルのテスト', type: :model do
         is_expected.to eq false
       end
       it '1文字以上であること: 1文字は〇', spec_category: "バリデーションとメッセージ表示" do
-        animal.name = Faker::Lorem.characters(number: 2)
+        animal.name = Faker::Lorem.characters(number: 1)
         is_expected.to eq true
       end
       it '20文字以下であること: 20文字は〇', spec_category: "バリデーションとメッセージ表示" do
