@@ -1,7 +1,9 @@
 <div class="container">
   <div class="h3">いいねランキング <i class="fa-solid fa-crown" style="color: #FFD43B;"></i></div>
   <div class="mb-3">
-    <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left-long">戻る</i></a>
+    <%= link_to posts_path do %>
+      <i class="fa-solid fa-arrow-left-long">戻る</i>
+    <% end %>
   </div>
   <%= render "public/posts/list", posts: @posts %>
 </div>

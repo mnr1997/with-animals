@@ -8,7 +8,7 @@ class Animal < ApplicationRecord
 
   enum sex: { male: 0, female: 1, unknown: 2 }
 
-  validates :name, presence: true, length: { maximum: 20 }
+  validates :name, presence: true, length: { minimum: 1, maximum: 20 }
 
   def get_animal_image(width, height)
     unless animal_image.attached?

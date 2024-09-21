@@ -44,7 +44,9 @@
           <%= f.submit '登録', class: "btn btn-block btn-success mb-3" %>
         <% end %>
         
-        <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left-long">戻る</i></a>
+        <%= link_to user_animals_path(current_user) do %>
+          <i class="fa-solid fa-arrow-left-long">戻る</i>
+        <% end %>
       </div>
 　　</div>
   </div>

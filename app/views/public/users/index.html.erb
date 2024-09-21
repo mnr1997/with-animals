@@ -7,7 +7,9 @@
     <% end %>
   </div>
   <div class="mb-3">
-    <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left-long">戻る</i></a>
+    <%= link_to posts_path do %>
+      <i class="fa-solid fa-arrow-left-long">戻る</i>
+    <% end %>
   </div>
   <%= render "user", users: @users %>
 </div>

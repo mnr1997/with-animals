@@ -30,4 +30,12 @@ RSpec.describe 'Postモデルのテスト', type: :model do
       end
     end
   end
+  
+  describe 'アソシエーションのテスト' do
+    context 'Userモデルとの関係' do
+      it 'N:1となっている', spec_category: "基本的なアソシエーション概念と適切な変数設定" do
+        expect(Post.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+    end
+  end
 end

@@ -2,7 +2,9 @@
   <div class="h3 mr-5">カテゴリー</div>
   
   <div class="mb-3">
-    <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left-long">戻る</i></a>
+    <%= link_to posts_path do %>
+      <i class="fa-solid fa-arrow-left-long">戻る</i>
+    <% end %>
   </div>
   
   <%= render partial: "shared/error_message", locals: { errors: @category.errors } %>
