@@ -6,7 +6,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     subject { user.valid? }
 
-    let!(:user) { create(:user) }
+    let!(:other_user) { create(:user) }
     let(:user) { build(:user) }
 
     context 'nameカラム' do
@@ -15,7 +15,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         is_expected.to eq false
       end
       it '1文字以上であること: 1文字は〇', spec_category: "バリデーションとメッセージ表示" do
-        user.name = Faker::Lorem.characters(number: 2)
+        user.name = Faker::Lorem.characters(number: 1)
         is_expected.to eq true
       end
       it '20文字以下であること: 20文字は〇', spec_category: "バリデーションとメッセージ表示" do
