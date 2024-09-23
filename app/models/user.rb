@@ -22,7 +22,7 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 50 }
 
   scope :user_search, -> (name) do
-    where("name LIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(name)}%")
+    where("name LIKE ?", "%#{sanitize_sql_like(name)}%")
   end
 
   def self.guest

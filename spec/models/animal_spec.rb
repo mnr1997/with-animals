@@ -1,42 +1,64 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'Animalモデルのテスト', type: :model do
-  describe 'バリデーションのテスト' do
+RSpec.describe "Animalモデルのテスト", type: :model do
+  describe "バリデーションのテスト" do
     subject { animal.valid? }
 
-    let(:user) { create(:user) }
-    let!(:animal) { build(:animal, user_id: user.id) }
+    let!(:animal) { build(:animal) }
 
-    context 'nameカラム' do
-      it '空欄でないこと', spec_category: "バリデーションとメッセージ表示" do
-        animal.name = ''
-        is_expected.to eq false
+    describe "nameカラム" do
+      before { animal.name = name }
+
+      context "空欄の場合" do
+        let!(:name) { "" }
+
+        it "失敗する" do
+          expect(subject).to eq false
+        end
+
+        it "エラーメッセージが正しい" do
+          subject
+          expect(animal.errors.full_messages).to contain_exactly("名前を入力してください", "名前は1文字以上で入力してください")
+        end
       end
-      it '1文字以上であること: 1文字は〇', spec_category: "バリデーションとメッセージ表示" do
-        animal.name = Faker::Lorem.characters(number: 1)
-        is_expected.to eq true
+
+      context "1文字の場合" do
+        let!(:name) { Faker::Lorem.characters(number: 1) }
+
+        it "成功する" do
+          is_expected.to eq true
+        end
       end
-      it '20文字以下であること: 20文字は〇', spec_category: "バリデーションとメッセージ表示" do
-        animal.name = Faker::Lorem.characters(number: 20)
-        is_expected.to eq true
+
+      context "20文字の場合" do
+        let!(:name) { Faker::Lorem.characters(number: 20) }
+
+        it "成功する" do
+          is_expected.to eq true
+        end
       end
-      it '20文字以下であること: 21文字は×', spec_category: "バリデーションとメッセージ表示" do
-        animal.name = Faker::Lorem.characters(number: 21)
-        is_expected.to eq false
+
+      context "21文字の場合" do
+        let!(:name) { Faker::Lorem.characters(number: 21) }
+
+        it "失敗する" do
+          is_expected.to eq false
+        end
       end
     end
   end
 
-  describe 'アソシエーションのテスト' do
-    context 'Userモデルとの関係' do
-      it 'N:1となっている', spec_category: "基本的なアソシエーション概念と適切な変数設定" do
+  describe "アソシエーションのテスト" do
+    describe "Userモデルとの関係" do
+      it "N:1となっている", spec_category: "基本的なアソシエーション概念と適切な変数設定" do
         expect(Animal.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
-    context 'Categoryモデルとの関係' do
-      it 'N:1となっている', spec_category: "基本的なアソシエーション概念と適切な変数設定" do
+
+    describe "Categoryモデルとの関係" do
+      it "N:1となっている", spec_category: "基本的なアソシエーション概念と適切な変数設定" do
         expect(Animal.reflect_on_association(:category).macro).to eq :belongs_to
       end
     end

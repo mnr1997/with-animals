@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   validates :caption, presence: true, length: { maximum: 200 }
 
   scope :caption_search, -> (caption) do
-    where("caption LIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(caption)}%")
+    where("caption LIKE ?", "%#{sanitize_sql_like(caption)}%")
   end
 
   def get_image(width, height)

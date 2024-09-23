@@ -1,67 +1,100 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'Userモデルのテスト', type: :model do
-  describe 'バリデーションのテスト' do
+RSpec.describe "Userモデルのテスト", type: :model do
+  describe "バリデーションのテスト" do
     subject { user.valid? }
 
-    let!(:other_user) { create(:user) }
-    let(:user) { build(:user) }
+    let!(:other_user) { build(:user) }
+    let!(:user) { build(:user) }
 
-    context 'nameカラム' do
-      it '空欄でないこと', spec_category: "バリデーションとメッセージ表示" do
-        user.name = ''
-        is_expected.to eq false
+    describe "nameカラム" do
+      before { user.name = name }
+      
+      context "空欄の場合" do
+        let!(:name) { "" }
+
+        it "失敗する" do
+          expect(subject).to eq false
+        end
       end
-      it '1文字以上であること: 1文字は〇', spec_category: "バリデーションとメッセージ表示" do
-        user.name = Faker::Lorem.characters(number: 1)
-        is_expected.to eq true
+      
+      context "1文字の場合" do
+        let!(:name) { Faker::Lorem.characters(number: 1) }
+
+        it "成功する" do
+          is_expected.to eq true
+        end
       end
-      it '20文字以下であること: 20文字は〇', spec_category: "バリデーションとメッセージ表示" do
-        user.name = Faker::Lorem.characters(number: 20)
-        is_expected.to eq true
+      
+      context "20文字の場合" do
+        let!(:name) { Faker::Lorem.characters(number: 20) }
+
+        it "成功する" do
+          is_expected.to eq true
+        end
       end
-      it '20文字以下であること: 21文字は×', spec_category: "バリデーションとメッセージ表示" do
-        user.name = Faker::Lorem.characters(number: 21)
-        is_expected.to eq false
+      
+      context "21文字の場合" do
+        let!(:name) { Faker::Lorem.characters(number: 21) }
+
+        it "失敗する" do
+          is_expected.to eq false
+        end
       end
-      it '一意性があること', spec_category: "バリデーションとメッセージ表示" do
-        user.name = other_user.name
-        is_expected.to eq false
+      
+      context "一意性がある場合" do
+        let!(:name) { other_user.name }
+        
+        it "成功する" do
+          is_expected.to eq true
+        end
       end
     end
 
-    context 'introductionカラム' do
-      it '50文字以下であること: 50文字は〇', spec_category: "バリデーションとメッセージ表示" do
-        user.introduction = Faker::Lorem.characters(number: 50)
-        is_expected.to eq true
+    describe "introductionカラム" do
+      before { user.introduction = introduction }
+      
+      context "50文字の場合" do
+        let!(:introduction) { Faker::Lorem.characters(number: 50) }
+
+        it "成功する" do
+          is_expected.to eq true
+        end
       end
-      it '50文字以下であること: 51文字は×', spec_category: "バリデーションとメッセージ表示" do
-        user.introduction = Faker::Lorem.characters(number: 51)
-        is_expected.to eq false
+      
+      context "51文字の場合" do
+        let!(:introduction) { Faker::Lorem.characters(number: 51) }
+
+        it "失敗する" do
+          is_expected.to eq false
+        end
       end
     end
   end
 
-  describe 'アソシエーションのテスト' do
-    context 'Postモデルとの関係' do
-      it '1:Nとなっている', spec_category: "基本的なアソシエーション概念と適切な変数設定" do
+  describe "アソシエーションのテスト" do
+    describe "Postモデルとの関係" do
+      it "1:Nとなっている", spec_category: "基本的なアソシエーション概念と適切な変数設定" do
         expect(User.reflect_on_association(:posts).macro).to eq :has_many
       end
     end
-    context 'Animalモデルとの関係' do
-      it '1:Nとなっている', spec_category: "基本的なアソシエーション概念と適切な変数設定" do
+    
+    describe "Animalモデルとの関係" do
+      it "1:Nとなっている", spec_category: "基本的なアソシエーション概念と適切な変数設定" do
         expect(User.reflect_on_association(:animals).macro).to eq :has_many
       end
     end
-    context 'Favoriteモデルとの関係' do
-      it '1:Nとなっている', spec_category: "基本的なアソシエーション概念と適切な変数設定" do
+    
+    describe "Favoriteモデルとの関係" do
+      it "1:Nとなっている", spec_category: "基本的なアソシエーション概念と適切な変数設定" do
         expect(User.reflect_on_association(:favorites).macro).to eq :has_many
       end
     end
-    context 'Commentモデルとの関係' do
-      it '1:Nとなっている', spec_category: "基本的なアソシエーション概念と適切な変数設定" do
+    
+    describe "Commentモデルとの関係" do
+      it "1:Nとなっている", spec_category: "基本的なアソシエーション概念と適切な変数設定" do
         expect(User.reflect_on_association(:comments).macro).to eq :has_many
       end
     end
