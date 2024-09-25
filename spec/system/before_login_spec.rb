@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "投稿のテスト" do
+describe "ユーザーログイン前のテスト" do
   let!(:post) { FactoryBot.build(:post) }
   
   describe "一覧画面のテスト" do
