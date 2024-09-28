@@ -23,7 +23,7 @@ describe "ユーザーログイン前のテスト" do
         expect(page).to have_link sign_in_link, href: new_user_session_path
       end
       
-      it "新規登録リンクが表示される: 緑色のボタンの表示が「Sign up」である", spec_category: "ルーティング・URL設定の理解(ログイン状況に合わせた応用)" do
+      it "新規登録リンクが表示される: 緑色のボタンの表示が「新規登録」である" do
         sign_up_link = find_all("a")[4].text
         expect(sign_up_link).to match(/新規登録/)
       end
@@ -62,15 +62,18 @@ describe "ユーザーログイン前のテスト" do
       it "名前フォームが表示される" do
         expect(page).to have_field "user[name]"
       end
+      
       it "メールアドレスフォームが表示される" do
         expect(page).to have_field "user[email]"
       end
+      
       it "パスワードフォームが表示される" do
         expect(page).to have_field "user[password]"
       end
       it "パスワード確認フォームが表示される" do
         expect(page).to have_field "user[password_confirmation]"
       end
+      
       it "登録ボタンが表示される" do
         expect(page).to have_button "登録"
       end
@@ -87,9 +90,40 @@ describe "ユーザーログイン前のテスト" do
       it "正しく新規登録される" do
         expect { click_button "登録" }.to change(User.all, :count).by(1)
       end
+      
       it "新規登録後のリダイレクト先が投稿一覧画面になっている" do
         click_button "登録"
         expect(current_path).to eq "/posts"
+      end
+    end
+  end
+  
+  describe "ユーザーログインのテスト" do
+    let!(:user) { build(:user) }
+    
+    before do
+      visit new_user_session_path
+    end
+    
+    context "表示内容の確認" do
+      it "URLが正しい" do
+        expect(current_path).to eq "/users/sign_in"
+      end
+      
+      it "「ユーザーログイン」と表示される" do
+        expect(page).to have_content "ユーザーログイン"
+      end
+      
+      it "メールアドレスフォームが表示される" do
+        expect(page).to have_field "user[email]"
+      end
+      
+      it "パスワードフォームが表示される" do
+        expect(page).to have_field "user[password]"
+      end
+      
+      it "ログインボタンが表示される" do
+        expect(page).to have_button "ログイン"
       end
     end
   end
