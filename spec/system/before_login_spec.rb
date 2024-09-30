@@ -44,6 +44,29 @@ describe "ユーザーログイン前のテスト" do
       end
     end
   end
+  
+  describe "ヘッダーのテスト" do
+    before do
+      visit root_path
+    end
+    
+    context "表示内容の確認" do
+      it "ヘッダーロゴが表示される: 左上から1番目のリンクが「with Animals」である" do
+        home_link = find_all('a')[0].text
+        expect(home_link).to match(/with Animals/)
+      end
+      
+      it "新規登録リンクが表示される: 左上から2番目のリンクが「新規登録」である" do
+        home_link = find_all('a')[1].text
+        expect(home_link).to match(/新規登録/)
+      end
+      
+      it "ログインリンクが表示される: 左上から3番目のリンクが「ログイン」である" do
+        home_link = find_all('a')[2].text
+        expect(home_link).to match(/ログイン/)
+      end
+    end
+  end
 
   describe "ユーザー新規登録のテスト" do
     before do
