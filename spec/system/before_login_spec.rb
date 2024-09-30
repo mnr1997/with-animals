@@ -44,26 +44,51 @@ describe "ユーザーログイン前のテスト" do
       end
     end
   end
-  
+
   describe "ヘッダーのテスト" do
     before do
       visit root_path
     end
-    
+
     context "表示内容の確認" do
       it "ヘッダーロゴが表示される: 左上から1番目のリンクが「with Animals」である" do
-        home_link = find_all('a')[0].text
+        home_link = find_all("a")[0].text
         expect(home_link).to match(/with Animals/)
       end
-      
+
       it "新規登録リンクが表示される: 左上から2番目のリンクが「新規登録」である" do
-        home_link = find_all('a')[1].text
+        home_link = find_all("a")[1].text
         expect(home_link).to match(/新規登録/)
       end
-      
+
       it "ログインリンクが表示される: 左上から3番目のリンクが「ログイン」である" do
-        home_link = find_all('a')[2].text
+        home_link = find_all("a")[2].text
         expect(home_link).to match(/ログイン/)
+      end
+    end
+
+    context "リンク内容の確認" do
+      subject { current_path }
+
+      it "ヘッダーロゴを押すと、トップ画面に遷移する" do
+        home_link = find_all("a")[0].text
+        home_link.gsub!(/\n/, "")
+        click_link home_link
+        is_expected.to eq "/"
+      end
+      
+      it "新規登録を押すと、新規登録画面に遷移する" do
+        home_link = find_all("a")[1].text
+        home_link.gsub!(/\n/, "")
+        click_link "新規登録", match: :first
+        is_expected.to eq "/users/sign_up"
+      end
+      
+      it "ログインを押すと、ログイン画面に遷移する" do
+        home_link = find_all("a")[2].text
+        home_link.gsub!(/\n/, "")
+        click_link "ログイン", match: :first
+        is_expected.to eq "/users/sign_in"
       end
     end
   end
@@ -149,7 +174,7 @@ describe "ユーザーログイン前のテスト" do
         expect(page).to have_button "ログイン"
       end
     end
-    
+
     context "ログイン成功" do
       before do
         fill_in "user[email]", with: user.email
@@ -161,7 +186,7 @@ describe "ユーザーログイン前のテスト" do
         expect(current_path).to eq "/posts"
       end
     end
-    
+
     context "ログイン失敗" do
       before do
         fill_in "user[email]", with: ""
