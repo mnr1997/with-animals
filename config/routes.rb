@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations, :password], controllers: {
     sessions: "admin/admins/sessions",
   }
+  
   namespace :admin do
     root to: "dashboards#top"
     resources :users, only: [:index, :destroy]
